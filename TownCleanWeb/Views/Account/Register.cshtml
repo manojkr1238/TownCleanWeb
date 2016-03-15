@@ -1,0 +1,90 @@
+﻿@model TownCleanWeb.Models.RegisterViewModel
+@{
+    ViewBag.Title = "Register User | Town Clean";
+}
+
+<div class="">
+    <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="x_panel">
+                <div class="x_title">
+                    <h2>User Registration <small>(Create new account)</small></h2>                    
+                    <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+                    <br />
+                @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal form-label-left", role = "form" }))
+                {
+                    @Html.AntiForgeryToken()
+                    @*<form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">*@
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="FName">
+                                    First Name <span class="required">*</span>
+                                </label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">                                    
+                                    @Html.TextBoxFor(m => m.FName, new { @class = "form-control col-md-7 col-xs-12", @required = "required" })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="MName">
+                                    Middle Name
+                                </label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    @Html.TextBoxFor(m => m.MName, new { @class = "form-control col-md-7 col-xs-12", @required = "required" })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="LName">
+                                    Last Name <span class="required">*</span>
+                                </label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    @Html.TextBoxFor(m => m.LName, new { @class = "form-control col-md-7 col-xs-12", @required = "required" })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="Email">
+                                    Email <span class="required">*</span>
+                                </label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    @Html.TextBoxFor(m => m.Email, new { @class = "form-control col-md-7 col-xs-12", @required = "required" })                                    
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="Password">
+                                    Password <span class="required">*</span>
+                                </label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    @Html.PasswordFor(m => m.Password, new { @class = "form-control col-md-7 col-xs-12", @required = "required" })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="ConfirmPassword">
+                                    Confirm Password <span class="required">*</span>
+                                </label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control col-md-7 col-xs-12", @required = "required" })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="Mobile">
+                                    Mobile No <span class="required">*</span>
+                                </label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    @Html.TextBoxFor(m => m.Mobile, new { @class = "form-control col-md-7 col-xs-12", @required = "required" })
+                                </div>
+                            </div>
+                            <div class="ln_solid"></div>
+                            <div class="form-group">
+                                <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+                                    <button type="submit" class="btn btn-primary">Cancel</button>
+                                    <button type="submit" class="btn btn-success">Submit</button>
+                                </div>
+                            </div>
+                        @*</form>*@
+                }
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="clearfix"></div>
+</div>

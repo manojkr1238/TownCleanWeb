@@ -1,0 +1,9 @@
+D:\TC\TownCleanWeb\TCRepositories\bin\Debug\TCRepositories.dll
+D:\TC\TownCleanWeb\TCRepositories\bin\Debug\TCRepositories.pdb
+D:\TC\TownCleanWeb\TCRepositories\obj\Debug\TCRepositories.csprojResolveAssemblyReference.cache
+D:\TC\TownCleanWeb\TCRepositories\obj\Debug\TCRepositories.dll
+D:\TC\TownCleanWeb\TCRepositories\obj\Debug\TCRepositories.pdb
+D:\TC\TownCleanWeb\TCRepositories\bin\Debug\EntityFramework.dll
+D:\TC\TownCleanWeb\TCRepositories\bin\Debug\TCDBEntities.dll
+D:\TC\TownCleanWeb\TCRepositories\bin\Debug\TCDBEntities.pdb
+D:\TC\TownCleanWeb\TCRepositories\bin\Debug\EntityFramework.xml

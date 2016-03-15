@@ -1,0 +1,106 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="TownClean_DBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="BranchMaster">
+    <Key>
+      <PropertyRef Name="Branch_ID" />
+    </Key>
+    <Property Name="Branch_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Branch_Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Address" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Phone" Type="nvarchar(max)" />
+    <Property Name="Email" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="Quotation_Details">
+    <Key>
+      <PropertyRef Name="Quotation_ID" />
+    </Key>
+    <Property Name="Quotation_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Quotation_No" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Quotation_Subject_Line" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Customer_Type_ID" Type="int" Nullable="false" />
+    <Property Name="Quotation_Service_Type_ID" Type="int" Nullable="false" />
+    <Property Name="Contact_Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Address" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Email" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Phone" Type="nvarchar" MaxLength="13" Nullable="false" />
+    <Property Name="Created_Date" Type="datetime" Nullable="false" />
+    <Property Name="Created_By" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Modified_Date" Type="datetime" />
+    <Property Name="Modified_By" Type="nvarchar" MaxLength="50" />
+    <Property Name="Branch_ID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Quotation_Item_Details">
+    <Key>
+      <PropertyRef Name="Item_ID" />
+    </Key>
+    <Property Name="Item_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Quotation_ID" Type="int" Nullable="false" />
+    <Property Name="Item_Description" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Tank_Quantity" Type="int" />
+    <Property Name="Tank_Volume" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Unit_Price" Type="decimal" Precision="18" Scale="4" />
+    <Property Name="Discount" Type="decimal" Precision="18" Scale="4" />
+    <Property Name="Total_Price" Type="decimal" Precision="18" Scale="4" />
+  </EntityType>
+  <EntityType Name="QuotationServiceMaster">
+    <Key>
+      <PropertyRef Name="Service_Type_ID" />
+    </Key>
+    <Property Name="Service_Type_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Service_Type_Name" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__Quotation__Branc__2F10007B">
+    <End Role="BranchMaster" Type="Self.BranchMaster" Multiplicity="1" />
+    <End Role="Quotation_Details" Type="Self.Quotation_Details" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BranchMaster">
+        <PropertyRef Name="Branch_ID" />
+      </Principal>
+      <Dependent Role="Quotation_Details">
+        <PropertyRef Name="Branch_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Quotation_Details_Quotation_Details">
+    <End Role="QuotationServiceMaster" Type="Self.QuotationServiceMaster" Multiplicity="1" />
+    <End Role="Quotation_Details" Type="Self.Quotation_Details" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="QuotationServiceMaster">
+        <PropertyRef Name="Service_Type_ID" />
+      </Principal>
+      <Dependent Role="Quotation_Details">
+        <PropertyRef Name="Quotation_Service_Type_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Quotation_Item_Details_Quotation_Details">
+    <End Role="Quotation_Details" Type="Self.Quotation_Details" Multiplicity="1" />
+    <End Role="Quotation_Item_Details" Type="Self.Quotation_Item_Details" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Quotation_Details">
+        <PropertyRef Name="Quotation_ID" />
+      </Principal>
+      <Dependent Role="Quotation_Item_Details">
+        <PropertyRef Name="Quotation_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="TownClean_DBModelStoreContainer">
+    <EntitySet Name="BranchMaster" EntityType="Self.BranchMaster" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Quotation_Details" EntityType="Self.Quotation_Details" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Quotation_Item_Details" EntityType="Self.Quotation_Item_Details" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="QuotationServiceMaster" EntityType="Self.QuotationServiceMaster" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__Quotation__Branc__2F10007B" Association="Self.FK__Quotation__Branc__2F10007B">
+      <End Role="BranchMaster" EntitySet="BranchMaster" />
+      <End Role="Quotation_Details" EntitySet="Quotation_Details" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Quotation_Details_Quotation_Details" Association="Self.FK_Quotation_Details_Quotation_Details">
+      <End Role="QuotationServiceMaster" EntitySet="QuotationServiceMaster" />
+      <End Role="Quotation_Details" EntitySet="Quotation_Details" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Quotation_Item_Details_Quotation_Details" Association="Self.FK_Quotation_Item_Details_Quotation_Details">
+      <End Role="Quotation_Details" EntitySet="Quotation_Details" />
+      <End Role="Quotation_Item_Details" EntitySet="Quotation_Item_Details" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

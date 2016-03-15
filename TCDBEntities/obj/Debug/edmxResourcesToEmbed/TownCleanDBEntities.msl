@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="TownClean_DBModelStoreContainer" CdmEntityContainer="TownClean_DBEntities">
+    <EntitySetMapping Name="Quotation_Details">
+      <EntityTypeMapping TypeName="TownClean_DBModel.Quotation_Details">
+        <MappingFragment StoreEntitySet="Quotation_Details">
+          <ScalarProperty Name="Branch_ID" ColumnName="Branch_ID" />
+          <ScalarProperty Name="Modified_By" ColumnName="Modified_By" />
+          <ScalarProperty Name="Modified_Date" ColumnName="Modified_Date" />
+          <ScalarProperty Name="Created_By" ColumnName="Created_By" />
+          <ScalarProperty Name="Created_Date" ColumnName="Created_Date" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Contact_Name" ColumnName="Contact_Name" />
+          <ScalarProperty Name="Quotation_Service_Type_ID" ColumnName="Quotation_Service_Type_ID" />
+          <ScalarProperty Name="Customer_Type_ID" ColumnName="Customer_Type_ID" />
+          <ScalarProperty Name="Quotation_Subject_Line" ColumnName="Quotation_Subject_Line" />
+          <ScalarProperty Name="Quotation_No" ColumnName="Quotation_No" />
+          <ScalarProperty Name="Quotation_ID" ColumnName="Quotation_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Quotation_Item_Details">
+      <EntityTypeMapping TypeName="TownClean_DBModel.Quotation_Item_Details">
+        <MappingFragment StoreEntitySet="Quotation_Item_Details">
+          <ScalarProperty Name="Total_Price" ColumnName="Total_Price" />
+          <ScalarProperty Name="Discount" ColumnName="Discount" />
+          <ScalarProperty Name="Unit_Price" ColumnName="Unit_Price" />
+          <ScalarProperty Name="Tank_Volume" ColumnName="Tank_Volume" />
+          <ScalarProperty Name="Tank_Quantity" ColumnName="Tank_Quantity" />
+          <ScalarProperty Name="Item_Description" ColumnName="Item_Description" />
+          <ScalarProperty Name="Quotation_ID" ColumnName="Quotation_ID" />
+          <ScalarProperty Name="Item_ID" ColumnName="Item_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="QuotationServiceMasters">
+      <EntityTypeMapping TypeName="TownClean_DBModel.QuotationServiceMaster">
+        <MappingFragment StoreEntitySet="QuotationServiceMaster">
+          <ScalarProperty Name="Service_Type_Name" ColumnName="Service_Type_Name" />
+          <ScalarProperty Name="Service_Type_ID" ColumnName="Service_Type_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BranchMasters">
+      <EntityTypeMapping TypeName="TownClean_DBModel.BranchMaster">
+        <MappingFragment StoreEntitySet="BranchMaster">
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Branch_Name" ColumnName="Branch_Name" />
+          <ScalarProperty Name="Branch_ID" ColumnName="Branch_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

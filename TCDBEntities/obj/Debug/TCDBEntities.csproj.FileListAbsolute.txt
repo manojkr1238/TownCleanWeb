@@ -1,0 +1,9 @@
+D:\TC\TownCleanWeb\TCDBEntities\bin\Debug\TCDBEntities.dll.config
+D:\TC\TownCleanWeb\TCDBEntities\bin\Debug\TCDBEntities.dll
+D:\TC\TownCleanWeb\TCDBEntities\bin\Debug\TCDBEntities.pdb
+D:\TC\TownCleanWeb\TCDBEntities\bin\Debug\EntityFramework.dll
+D:\TC\TownCleanWeb\TCDBEntities\bin\Debug\EntityFramework.SqlServer.dll
+D:\TC\TownCleanWeb\TCDBEntities\bin\Debug\EntityFramework.xml
+D:\TC\TownCleanWeb\TCDBEntities\bin\Debug\EntityFramework.SqlServer.xml
+D:\TC\TownCleanWeb\TCDBEntities\obj\Debug\TCDBEntities.dll
+D:\TC\TownCleanWeb\TCDBEntities\obj\Debug\TCDBEntities.pdb
