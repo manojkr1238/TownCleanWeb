@@ -16,12 +16,13 @@ namespace TCDBEntities
     {
         public QuotationServiceMaster()
         {
-            this.Quotation_Details = new HashSet<Quotation_Details>();
+            this.Quotations = new HashSet<Quotation>();
         }
     
-        public int Service_Type_ID { get; set; }
-        public string Service_Type_Name { get; set; }
+        public int ServiceTypeID { get; set; }
+        public string ServiceTypeName { get; set; }
+        public bool IsDeleted { get; set; }
     
-        public virtual ICollection<Quotation_Details> Quotation_Details { get; set; }
+        public virtual ICollection<Quotation> Quotations { get; set; }
     }
 }

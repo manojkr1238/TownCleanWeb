@@ -18,7 +18,6 @@ namespace TCDBEntities
         public TownClean_DBEntities()
             : base("name=TownClean_DBEntities")
         {
-
         }
     
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
@@ -26,9 +25,9 @@ namespace TCDBEntities
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Quotation_Details> Quotation_Details { get; set; }
-        public virtual DbSet<Quotation_Item_Details> Quotation_Item_Details { get; set; }
-        public virtual DbSet<QuotationServiceMaster> QuotationServiceMasters { get; set; }
         public virtual DbSet<BranchMaster> BranchMasters { get; set; }
+        public virtual DbSet<Quotation> Quotations { get; set; }
+        public virtual DbSet<QuotationDetail> QuotationDetails { get; set; }
+        public virtual DbSet<QuotationServiceMaster> QuotationServiceMasters { get; set; }
     }
 }

@@ -12,17 +12,19 @@ namespace TCDBEntities
     using System;
     using System.Collections.Generic;
     
-    public partial class Quotation_Item_Details
+    public partial class QuotationDetail
     {
-        public int Item_ID { get; set; }
-        public int Quotation_ID { get; set; }
-        public string Item_Description { get; set; }
-        public Nullable<int> Tank_Quantity { get; set; }
-        public Nullable<decimal> Tank_Volume { get; set; }
-        public Nullable<decimal> Unit_Price { get; set; }
+        public int ItemID { get; set; }
+        public int QuotationID { get; set; }
+        public string ItemDescription { get; set; }
+        public Nullable<int> TankQuantity { get; set; }
+        public Nullable<decimal> TankVolume { get; set; }
+        public Nullable<decimal> UnitPrice { get; set; }
         public Nullable<decimal> Discount { get; set; }
-        public Nullable<decimal> Total_Price { get; set; }
+        public Nullable<decimal> TotalPrice { get; set; }
+        public bool IsDeleted { get; set; }
+        public Nullable<bool> IsSent { get; set; }
     
-        public virtual Quotation_Details Quotation_Details { get; set; }
+        public virtual Quotation Quotation { get; set; }
     }
 }

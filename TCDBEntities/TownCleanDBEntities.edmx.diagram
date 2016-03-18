@@ -5,13 +5,13 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="d084587e10564a58a83d498c8aee09c7" Name="Diagram1" >
-        <EntityTypeShape EntityType="TownClean_DBModel.Quotation_Details" Width="1.5" PointX="3" PointY="1" />
-        <EntityTypeShape EntityType="TownClean_DBModel.Quotation_Item_Details" Width="1.5" PointX="5.25" PointY="1.75" />
-        <EntityTypeShape EntityType="TownClean_DBModel.QuotationServiceMaster" Width="1.5" PointX="0.75" PointY="2.25" />
+        <EntityTypeShape EntityType="TownClean_DBModel.BranchMaster" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="TownClean_DBModel.Quotation" Width="1.5" PointX="3" PointY="2.5" />
+        <EntityTypeShape EntityType="TownClean_DBModel.QuotationDetail" Width="1.5" PointX="5.25" PointY="3.375" />
+        <EntityTypeShape EntityType="TownClean_DBModel.QuotationServiceMaster" Width="1.5" PointX="0.75" PointY="4" />
+        <AssociationConnector Association="TownClean_DBModel.FK__Quotation__Branc__2F10007B" />
         <AssociationConnector Association="TownClean_DBModel.FK_Quotation_Details_Quotation_Details" />
         <AssociationConnector Association="TownClean_DBModel.FK_Quotation_Item_Details_Quotation_Details" />
-        <EntityTypeShape EntityType="TownClean_DBModel.BranchMaster" Width="1.5" PointX="5.375" PointY="5.875" />
-        <AssociationConnector Association="TownClean_DBModel.FK__Quotation__Branc__2F10007B" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

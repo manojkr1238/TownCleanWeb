@@ -16,15 +16,16 @@ namespace TCDBEntities
     {
         public BranchMaster()
         {
-            this.Quotation_Details = new HashSet<Quotation_Details>();
+            this.Quotations = new HashSet<Quotation>();
         }
     
-        public int Branch_ID { get; set; }
-        public string Branch_Name { get; set; }
+        public int BranchID { get; set; }
+        public string BranchName { get; set; }
         public string Address { get; set; }
         public string Phone { get; set; }
         public string Email { get; set; }
+        public bool IsDeleted { get; set; }
     
-        public virtual ICollection<Quotation_Details> Quotation_Details { get; set; }
+        public virtual ICollection<Quotation> Quotations { get; set; }
     }
 }
