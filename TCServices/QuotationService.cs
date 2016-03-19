@@ -12,25 +12,25 @@ namespace TCServices
     
     public class QuotationService : IQuotationService
     {
-        GenericRepository<Quotation_Details> _genericRepository;       
+        GenericRepository<Quotation> _genericRepository;       
 
         public QuotationService(DbContext dbContext)
         {
-            this._genericRepository = new GenericRepository<Quotation_Details>(dbContext);
+            this._genericRepository = new GenericRepository<Quotation>(dbContext);
         }
 
-        public IQueryable<Quotation_Details> GetAllQuotations()
+        public IQueryable<Quotation> GetAllQuotations()
         {
            return  _genericRepository.GetAll();
         }
-        public Quotation_Details GetQuotationById(int id)
+        public Quotation GetQuotationById(int id)
         {
             return _genericRepository.GetById(id);
         }
 
-        public IEnumerable<Quotation_Details> GetAllQuotationListBranchWise(int branchid)
+        public IEnumerable<Quotation> GetAllQuotationListBranchWise(int branchid)
         {
-            return _genericRepository.GetAll().Where(b => b.Branch_ID == branchid);
+            return _genericRepository.GetAll().Where(b => b.BranchID == branchid);
         }
 
         public int DeleteQuotation(int id)
@@ -38,15 +38,29 @@ namespace TCServices
             return _genericRepository.Delete(id);             
         }
 
-        public int UpdateQuotation(Quotation_Details quotation)
+        public int UpdateQuotation(Quotation quotation)
         {
             return _genericRepository.Update(quotation);
         }
 
-        public int InsertQuotation(Quotation_Details quotation)
+        public int InsertQuotation(Quotation quotation)
         {
             return _genericRepository.Insert(quotation);
-        }      
+        }
+
+        public IEnumerable<QuotationSummary> GetQuotationSummaryList()
+        {
+            return _genericRepository.GetAll().Select(q => new QuotationSummary
+            {
+                QuotationID = q.QuotationID,
+                QuotationNo = q.QuotationNo,
+                ContactName = q.ContactName,
+                Address = "Address " + q.Address + " Email " + q.Email + "Phone " + q.Phone,
+                QuotationDate = q.CreatedDate,
+                TotalVolume = q.QuotationDetails.Sum(l => l.TankVolume),
+                TotalPrice = q.QuotationDetails.Sum( p => p.TotalPrice)
+            });
+        }
          
     }
 }

@@ -1,4 +1,4 @@
-﻿@model IEnumerable<TCDBEntities.Quotation_Details>
+﻿@model IEnumerable<TCDBEntities.QuotationSummary>
 @{
     ViewBag.Title = "QuotationList";   
 }
@@ -29,23 +29,23 @@
                         </thead>
                         <tbody>
                             @{
-                                var quot = Model.ToList();
+                                //var quot = Model.ToList();
 
-                                for (int i = 0; i < quot.Count; i++)
+                                for (int i = 0; i < Model.Count; i++)
                                 {
                                     if (i % 2 == 0)
                                     {
                                         <tr class="even pointer">
                                             <td class="a-center ">
-                                                @quot[i].Quotation_No
+                                                @Model[i].QuotationNo
                                             </td>
-                                            <td class=" ">@quot[i].Created_Date</td>
-                                            <td class=" ">@quot[i].Contact_Name </td>
+                                            <td class=" ">@Model[i].CreatedDate</td>
+                                            <td class=" ">@Model[i].ContactName </td>
                                             <td class=" ">
-                                                @quot[i].Address <i class="success fa fa-long-arrow-up"></i>
+                                                @Model[i].Address <i class="success fa fa-long-arrow-up"></i>
                                             </td>
-                                            <td class=" ">@quot[i].Phone</td>
-                                            <td class=" ">@quot[i].Email</td>
+                                            <td class=" "></td>
+                                            <td class=" "></td>
                                             <td class="a-right a-right ">$7.45</td>
                                             <td class=" last">
                                                 <a href="#">View</a>

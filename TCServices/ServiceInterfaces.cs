@@ -9,11 +9,12 @@ namespace TCServices
 {
     public interface IQuotationService
     {
-        IQueryable<Quotation_Details> GetAllQuotations();
-        Quotation_Details GetQuotationById(int id);
-        IEnumerable<Quotation_Details> GetAllQuotationListBranchWise(int branchid);
+        IQueryable<Quotation> GetAllQuotations();
+        Quotation GetQuotationById(int id);
+        IEnumerable<Quotation> GetAllQuotationListBranchWise(int branchid);
         int DeleteQuotation(int id);
-        int UpdateQuotation(Quotation_Details quotation);
-        int InsertQuotation(Quotation_Details quotation);
+        int UpdateQuotation(Quotation quotation);
+        int InsertQuotation(Quotation quotation);
+        IEnumerable<QuotationSummary> GetQuotationSummaryList();
     }
 }

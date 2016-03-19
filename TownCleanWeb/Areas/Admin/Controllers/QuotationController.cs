@@ -21,7 +21,7 @@ namespace TownCleanWeb.Areas.Admin.Controllers
         // GET: Admin/Quotation
         public ActionResult QuotationList()
         {
-            var quotationList = _quotationService.GetAllQuotations();
+            var quotationList = _quotationService.GetQuotationSummaryList().ToList();
             return View(quotationList);
         }
 
@@ -37,7 +37,7 @@ namespace TownCleanWeb.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public ActionResult AddNewQuotation(Quotation_Details model)
+        public ActionResult AddNewQuotation(Quotation model)
         {
             int i = 0;
            if(!ModelState.IsValid)
