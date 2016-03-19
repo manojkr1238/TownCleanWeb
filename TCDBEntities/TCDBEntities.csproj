@@ -76,6 +76,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>TownCleanDBEntities.edmx</DependentUpon>
     </Compile>
+    <Compile Include="TownCleanEntityModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <EntityDeploy Include="TownCleanDBEntities.edmx">
