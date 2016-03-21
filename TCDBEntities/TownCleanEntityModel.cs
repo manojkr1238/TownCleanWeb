@@ -12,8 +12,11 @@ namespace TCDBEntities
         public string QuotationNo { get; set; }
         public string ContactName { get; set; }
         public string Address { get; set; }
+        public string Email { get; set; }
+        public string Phone { get; set; }
         public DateTime QuotationDate { get; set; }
         public decimal? TotalVolume { get; set; }
         public decimal? TotalPrice { get; set; }
+        public bool IsSent { get; set; }
     }
 }
