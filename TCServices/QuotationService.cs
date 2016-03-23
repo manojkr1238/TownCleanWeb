@@ -55,10 +55,12 @@ namespace TCServices
                 QuotationID = q.QuotationID,
                 QuotationNo = q.QuotationNo,
                 ContactName = q.ContactName,
-                Address = "Address " + q.Address + " Email " + q.Email + "Phone " + q.Phone,
+                Address = q.Address,
+                Email = q.Email,
+                Phone = q.Phone,
                 QuotationDate = q.CreatedDate,
                 TotalVolume = q.QuotationDetails.Sum(l => l.TankVolume),
-                TotalPrice = q.QuotationDetails.Sum( p => p.TotalPrice)
+                TotalPrice = q.QuotationDetails.Sum( p => p.TotalPrice)                
             });
         }
          
