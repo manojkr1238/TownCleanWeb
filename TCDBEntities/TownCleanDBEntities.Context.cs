@@ -25,9 +25,13 @@ namespace TCDBEntities
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<BranchMaster> BranchMasters { get; set; }
+        public virtual DbSet<Branch> Branches { get; set; }
+        public virtual DbSet<City> Cities { get; set; }
+        public virtual DbSet<Customer> Customers { get; set; }
+        public virtual DbSet<CustomerType> CustomerTypes { get; set; }
+        public virtual DbSet<Expense> Expenses { get; set; }
         public virtual DbSet<Quotation> Quotations { get; set; }
         public virtual DbSet<QuotationDetail> QuotationDetails { get; set; }
-        public virtual DbSet<QuotationServiceMaster> QuotationServiceMasters { get; set; }
+        public virtual DbSet<QuotationServiceType> QuotationServiceTypes { get; set; }
     }
 }

@@ -12,16 +12,16 @@ namespace TCDBEntities
     using System;
     using System.Collections.Generic;
     
-    public partial class QuotationServiceMaster
+    public partial class QuotationServiceType
     {
-        public QuotationServiceMaster()
+        public QuotationServiceType()
         {
             this.Quotations = new HashSet<Quotation>();
         }
     
         public int ServiceTypeID { get; set; }
         public string ServiceTypeName { get; set; }
-        public bool IsDeleted { get; set; }
+        public string ShortCode { get; set; }
     
         public virtual ICollection<Quotation> Quotations { get; set; }
     }

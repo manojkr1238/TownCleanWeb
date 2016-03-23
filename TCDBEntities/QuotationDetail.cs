@@ -22,8 +22,6 @@ namespace TCDBEntities
         public Nullable<decimal> UnitPrice { get; set; }
         public Nullable<decimal> Discount { get; set; }
         public Nullable<decimal> TotalPrice { get; set; }
-        public bool IsDeleted { get; set; }
-        public Nullable<bool> IsSent { get; set; }
     
         public virtual Quotation Quotation { get; set; }
     }

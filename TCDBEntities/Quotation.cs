@@ -34,11 +34,12 @@ namespace TCDBEntities
         public string ModifiedBy { get; set; }
         public int BranchID { get; set; }
         public Nullable<int> CustomerID { get; set; }
-        public bool IsSent { get; set; }
-        public bool IsDeleted { get; set; }
+        public string Comment { get; set; }
     
-        public virtual BranchMaster BranchMaster { get; set; }
-        public virtual QuotationServiceMaster QuotationServiceMaster { get; set; }
+        public virtual Branch Branch { get; set; }
+        public virtual Customer Customer { get; set; }
+        public virtual CustomerType CustomerType { get; set; }
+        public virtual QuotationServiceType QuotationServiceType { get; set; }
         public virtual ICollection<QuotationDetail> QuotationDetails { get; set; }
     }
 }

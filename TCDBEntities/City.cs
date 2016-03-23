@@ -12,20 +12,19 @@ namespace TCDBEntities
     using System;
     using System.Collections.Generic;
     
-    public partial class BranchMaster
+    public partial class City
     {
-        public BranchMaster()
+        public City()
         {
-            this.Quotations = new HashSet<Quotation>();
+            this.Branches = new HashSet<Branch>();
+            this.Customers = new HashSet<Customer>();
         }
     
-        public int BranchID { get; set; }
-        public string BranchName { get; set; }
-        public string Address { get; set; }
-        public string Phone { get; set; }
-        public string Email { get; set; }
-        public bool IsDeleted { get; set; }
+        public int CityID { get; set; }
+        public string CityName { get; set; }
+        public string STDCode { get; set; }
     
-        public virtual ICollection<Quotation> Quotations { get; set; }
+        public virtual ICollection<Branch> Branches { get; set; }
+        public virtual ICollection<Customer> Customers { get; set; }
     }
 }

@@ -5,11 +5,23 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="d084587e10564a58a83d498c8aee09c7" Name="Diagram1" >
-        <EntityTypeShape EntityType="TownClean_DBModel.BranchMaster" Width="1.5" PointX="0.75" PointY="0.75" />
-        <EntityTypeShape EntityType="TownClean_DBModel.Quotation" Width="1.5" PointX="3" PointY="2.5" />
-        <EntityTypeShape EntityType="TownClean_DBModel.QuotationDetail" Width="1.5" PointX="5.25" PointY="3.375" />
-        <EntityTypeShape EntityType="TownClean_DBModel.QuotationServiceMaster" Width="1.5" PointX="0.75" PointY="4" />
-        <AssociationConnector Association="TownClean_DBModel.FK__Quotation__Branc__2F10007B" />
+        <EntityTypeShape EntityType="TownClean_DBModel.Branch" Width="1.5" PointX="3" PointY="7.875" />
+        <EntityTypeShape EntityType="TownClean_DBModel.City" Width="1.5" PointX="0.75" PointY="8.375" />
+        <EntityTypeShape EntityType="TownClean_DBModel.Customer" Width="1.5" PointX="5.25" PointY="6.875" />
+        <EntityTypeShape EntityType="TownClean_DBModel.CustomerType" Width="1.5" PointX="3" PointY="4.125" />
+        <EntityTypeShape EntityType="TownClean_DBModel.Expense" Width="1.5" PointX="5.25" PointY="18.75" />
+        <EntityTypeShape EntityType="TownClean_DBModel.Quotation" Width="1.5" PointX="7.5" PointY="6.875" />
+        <EntityTypeShape EntityType="TownClean_DBModel.QuotationDetail" Width="1.5" PointX="9.75" PointY="8" />
+        <EntityTypeShape EntityType="TownClean_DBModel.QuotationServiceType" Width="1.5" PointX="5.25" PointY="3.875" />
+        <AssociationConnector Association="TownClean_DBModel.FK__Quotation__Branc__35BCFE0A" />
+        <AssociationConnector Association="TownClean_DBModel.FK_BranchMaster_City" />
+        <AssociationConnector Association="TownClean_DBModel.FK_Customer_BranchMaster" />
+        <AssociationConnector Association="TownClean_DBModel.FK_Expense_Details_BranchMaster" />
+        <AssociationConnector Association="TownClean_DBModel.FK_Customer_City" />
+        <AssociationConnector Association="TownClean_DBModel.FK_Customer_CustomerType" />
+        <AssociationConnector Association="TownClean_DBModel.FK_Quotation_Customer" />
+        <AssociationConnector Association="TownClean_DBModel.FK_CustomerType_CustomerType" />
+        <AssociationConnector Association="TownClean_DBModel.FK_Quotation_CustomerType" />
         <AssociationConnector Association="TownClean_DBModel.FK_Quotation_Details_Quotation_Details" />
         <AssociationConnector Association="TownClean_DBModel.FK_Quotation_Item_Details_Quotation_Details" />
       </Diagram>
