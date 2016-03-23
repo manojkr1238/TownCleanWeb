@@ -48,7 +48,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BranchMaster.cs">
+    <Compile Include="Branch.cs">
+      <DependentUpon>TownCleanDBEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="City.cs">
+      <DependentUpon>TownCleanDBEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Customer.cs">
+      <DependentUpon>TownCleanDBEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CustomerType.cs">
+      <DependentUpon>TownCleanDBEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Expense.cs">
       <DependentUpon>TownCleanDBEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -58,7 +70,7 @@
     <Compile Include="QuotationDetail.cs">
       <DependentUpon>TownCleanDBEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="QuotationServiceMaster.cs">
+    <Compile Include="QuotationServiceType.cs">
       <DependentUpon>TownCleanDBEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="TownCleanDBEntities.Context.cs">
