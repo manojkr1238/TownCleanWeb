@@ -6,17 +6,24 @@ using System.Threading.Tasks;
 using TCDBEntities;
 using TCRepositories;
 using System.Data.Entity;
+using System.Web.Mvc;
 
 namespace TCServices
 {
     
     public class QuotationService : IQuotationService
     {
-        GenericRepository<Quotation> _genericRepository;       
+        GenericRepository<Quotation> _genericRepository;
+        GenericRepository<CustomerType> _genericRepositoryCustomerType;
+        GenericRepository<QuotationServiceType> _genericRepositoryQuotationServiceType;
+        GenericRepository<Customer> _genericRepositoryCustomer;
 
         public QuotationService(DbContext dbContext)
         {
             this._genericRepository = new GenericRepository<Quotation>(dbContext);
+            this._genericRepositoryCustomerType = new GenericRepository<CustomerType>(dbContext);
+            this._genericRepositoryQuotationServiceType = new GenericRepository<QuotationServiceType>(dbContext);
+            this._genericRepositoryCustomer = new GenericRepository<Customer>(dbContext);
         }
 
         public IQueryable<Quotation> GetAllQuotations()
@@ -45,6 +52,10 @@ namespace TCServices
 
         public int InsertQuotation(Quotation quotation)
         {
+            QuotationServiceType qtcs = GetQuotationServiceTypeList().Where(c => c.ServiceTypeID == quotation.QuotationServiceTypeID).FirstOrDefault();
+            quotation.QuotationNo = "TC/QC/" + qtcs.ShortCode +"/"+ (GetMaximumQuotationID() + 1).ToString() + "/" + DateTime.Now.ToString("yyyyMMdd");
+            quotation.QuotationSubjectLine = "Quotation For " + qtcs.ServiceTypeName + " - " + quotation.ContactName;
+            quotation.CreatedDate = DateTime.Now;
             return _genericRepository.Insert(quotation);
         }
 
@@ -63,6 +74,27 @@ namespace TCServices
                 TotalPrice = q.QuotationDetails.Sum( p => p.TotalPrice)                
             });
         }
+
+        public IEnumerable<CustomerType> GetCustomerTypeList()
+        {
+            return _genericRepositoryCustomerType.GetAll();
+        }
+        public IEnumerable<QuotationServiceType> GetQuotationServiceTypeList()
+        {
+            return _genericRepositoryQuotationServiceType.GetAll();
+        }
+        public IEnumerable<Customer> GetAllActiveCustomerByBranchId(int branchid)
+        {
+            return _genericRepositoryCustomer.GetAll().Where(d => d.BranchID == branchid && d.IsDeleted == false);            
+        }
+        public int GetMaximumQuotationID()
+        {          
+           if (_genericRepository.GetAll().Count() <= 0)
+               return 0;
+           else
+               return _genericRepository.GetAll().Max(q => q.QuotationID);
+        }
+
          
     }
 }

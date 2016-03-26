@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.Mvc;
 using TCDBEntities;
 
 namespace TCServices
@@ -16,6 +17,9 @@ namespace TCServices
         int UpdateQuotation(Quotation quotation);
         int InsertQuotation(Quotation quotation);
         IEnumerable<QuotationSummary> GetQuotationSummaryList();
+        IEnumerable<CustomerType> GetCustomerTypeList();
+        IEnumerable<QuotationServiceType> GetQuotationServiceTypeList();
+        IEnumerable<Customer> GetAllActiveCustomerByBranchId(int branchid);
     }
 
     public interface IQuotationServiceTypeService
