@@ -1,8 +1,122 @@
-﻿
+﻿@model TCDBEntities.InsertQuotation
 @{
-    ViewBag.Title = "AddNewQuotation";
-    Layout = "~/Views/Shared/_LayoutPage.cshtml";
+    ViewBag.Title = "Add New Quotation | Town Clean";    
 }
 
-<h2>AddNewQuotation</h2>
+<div class="">
+    <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="x_panel">
+                <div class="x_title">
+                    <h2>Create New Quotation <small></small></h2>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+                    <br />
+                    @using (Html.BeginForm("AddNewQuotation", "Quotation", FormMethod.Post, new { @class = "form-horizontal form-label-left", role = "form" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        @*<form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">*@
+                        <div class="form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="FName">
+                                Contact Name <span class="required">*</span>
+                            </label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">                                
+                                @Html.TextBoxFor(m => m.ContactName, new { @class = "form-control col-md-7 col-xs-12", @required = "required" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="MName">
+                                Address <span class="required">*</span>
+                            </label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                @Html.TextBoxFor(m => m.Address, new { @class = "form-control col-md-7 col-xs-12", @required = "required" })
+                            </div>
+                        </div>                        
+                        <div class="form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="LName">
+                                Phone <span class="required">*</span>
+                            </label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                @Html.TextBoxFor(m => m.Phone, new { @class = "form-control col-md-7 col-xs-12", @required = "required" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="Email">
+                                Email <span class="required">&nbsp;</span>
+                            </label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                @Html.TextBoxFor(m => m.Email, new { @class = "form-control col-md-7 col-xs-12" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="Password">
+                                Customer Type <span class="required">*</span>
+                            </label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                @Html.DropDownListFor(m => m.CustomerTypeID, Model.CustomerTypeList, "  ----- Select Customer Type -----  ", new { @class = "form-control col-md-7 col-xs-12" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="ConfirmPassword">
+                                Service Type <span class="required">*</span>
+                            </label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                @Html.DropDownListFor(m => m.QuotationServiceTypeID, Model.QuotationServiceTypeList,"  ----- Select Service Type -----  ", new { @class = "form-control col-md-7 col-xs-12", @required = "required" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="ConfirmPassword">
+                                Are You Creating Quotation For Existing Customer? <span class="required">&nbsp;</span>
+                            </label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                @Html.CheckBoxFor(m => m.IsExitingCustomer, new { @id = "chkForExistingCustomer" })
+                            </div>
+                        </div>
+                        <div id="DivCustomer" class="form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="Mobile">
+                                Customer Name <span class="required">*</span>
+                            </label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                @Html.DropDownListFor(m => m.CustomerID, Model.CustomerList,"  ----- Select Customer -----  ", new { @class = "form-control col-md-7 col-xs-12", @id = "txtCustomerName"})
+                            </div>
+                        </div>
+                        <div class="ln_solid"></div>
+                        <div class="form-group">
+                            <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+                                <button type="submit" class="btn btn-primary">Cancel</button>
+                                <button type="submit" class="btn btn-success">Add Items</button>
+                            </div>
+                        </div>
+                        @*</form>*@
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="clearfix"></div>
+</div>
+
+@section JavaScript
+{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#txtCustomerName").val('');
+            $("#DivCustomer").hide();
+
+            $("#chkForExistingCustomer").change(function () {
+                if (this.checked)
+                {
+                    $("#DivCustomer").show();
+                }
+                else
+                {
+                    $("#DivCustomer").hide();
+                }
+            });
+        });
+
+        
+    </script>
+}
 

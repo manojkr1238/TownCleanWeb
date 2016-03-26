@@ -96,6 +96,11 @@ namespace TownCleanWeb.Models
         [Phone]
         [Display(Name = "Mobile")]
         public string Mobile { get; set; }
+
+        [Required]
+        [Phone]
+        [Display(Name = "BranchID")]
+        public string BranchID { get; set; }
     }
 
     public class UserInfoViewModel

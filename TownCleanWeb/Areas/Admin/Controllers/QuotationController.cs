@@ -11,7 +11,7 @@ namespace TownCleanWeb.Areas.Admin.Controllers
 {
     [Authorize]
     public class QuotationController : BaseController
-    {
+    {       
         private IQuotationService _quotationService;
 
         public QuotationController(IQuotationService quotationService)
@@ -20,7 +20,7 @@ namespace TownCleanWeb.Areas.Admin.Controllers
         }
         // GET: Admin/Quotation
         public ActionResult QuotationList()
-        {
+        {           
             var quotationList = _quotationService.GetQuotationSummaryList().ToList();
             return View(quotationList);
         }
@@ -33,11 +33,19 @@ namespace TownCleanWeb.Areas.Admin.Controllers
 
         public ActionResult AddNewQuotation()
         {
-            return View();
+            InsertQuotation quot = new InsertQuotation();
+            quot.CustomerTypeID = null;
+            quot.QuotationServiceTypeID = null;
+            quot.CustomerID = null;
+            quot.CustomerTypeList = new SelectList(_quotationService.GetCustomerTypeList(), "CustomerTypeID", "CustomerTypeName", quot.CustomerTypeID);
+            quot.QuotationServiceTypeList = new SelectList(_quotationService.GetQuotationServiceTypeList(), "ServiceTypeID", "ServiceTypeName", quot.QuotationServiceTypeID);
+            var custList = _quotationService.GetAllActiveCustomerByBranchId(1).Select(c => new { CustomerID = c.CustomerID, CustomerName = c.CustomerFirstName + " " + c.CustomerMidName + " " + c.CustomerLastName });
+            quot.CustomerList = new SelectList(custList, "CustomerID", "CustomerName", quot.CustomerID);
+            return View(quot);
         }
 
         [HttpPost]
-        public ActionResult AddNewQuotation(Quotation model)
+        public ActionResult AddNewQuotation(InsertQuotation model)
         {
             int i = 0;
            if(!ModelState.IsValid)
@@ -45,13 +53,43 @@ namespace TownCleanWeb.Areas.Admin.Controllers
                return View(model);              
            }
 
-            i = _quotationService.InsertQuotation(model);
+           Quotation qc = new Quotation();
+           qc.ContactName = model.ContactName;
+           qc.Address = model.Address;
+           qc.Phone = model.Phone;
+           qc.Email = model.Email;
+           qc.CustomerTypeID = Convert.ToInt32(model.CustomerTypeID);
+           qc.QuotationServiceTypeID = Convert.ToInt32(model.QuotationServiceTypeID);
+           qc.CustomerID = Convert.ToInt32(model.CustomerID);
+           qc.BranchID = branchID;
+           qc.CreatedBy = userName;
+           if (model.IsExitingCustomer)
+               qc.CustomerID = model.CustomerID;
+           else
+               qc.CustomerID = null;
+
+            i = _quotationService.InsertQuotation(qc);
             if (i > 0)
-                return RedirectToAction("QuotationList");
+                return RedirectToAction("AddItemsForQuotation", new { id = qc.QuotationID});
             else
             {
                 return View(model); 
             }            
+        }
+
+        
+        //[Route("QuotationNo/{id}")]
+        public ActionResult AddItemsForQuotation(int id)        
+        {
+            Quotation qc = _quotationService.GetQuotationById(id);
+            ViewBag.Qtc = qc;
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult AddItemsForQuotation(QuotationDetail quotationDetail)
+        {
+            return View();
         }
     }
 }

@@ -12,6 +12,7 @@ namespace TownCleanWeb.Models
         public string FName { get; set; }
         public string MName { get; set; }
         public string LName { get; set; }
+        public int BranchID { get; set; }
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {
             // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType

@@ -1,0 +1,123 @@
+﻿@model TCDBEntities.QuotationDetail
+@{
+    ViewBag.Title = "Add Items For Quotation | Town Clean";
+}
+
+<div class="">
+    <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="x_panel">
+                @{
+                    var quotation = (TCDBEntities.Quotation)ViewBag.Qtc;
+                    <div class="x_title">
+                        <h2>Quotation No -  @quotation.QuotationNo<small></small></h2>
+                        <ul class="nav navbar-right panel_toolbox">
+                            <li>
+                                <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                            </li>                            
+                        </ul>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+                        <table class="table">
+                            <thead>
+                                <tr>                                    
+                                    <th>Subject</th>
+                                    <th>Contact Person</th>
+                                    <th>Phone</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>                                    
+                                    <td>@quotation.QuotationSubjectLine</td>
+                                    <td>@quotation.ContactName</td>
+                                    <td>@quotation.Phone</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    }
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="x_panel">
+                <div class="x_title">
+                    <h2>Add Quotation Items <small></small></h2>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+                    <br />
+                    @using (Html.BeginForm("AddItemsForQuotation", "Quotation", FormMethod.Post, new { @class = "form-horizontal form-label-left", role = "form" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        @*<form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">*@
+                        <div class="form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="FName">
+                                Tank Volume <span class="required">*</span>
+                            </label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                @Html.TextBoxFor(m => m.TankVolume, new { @class = "form-control col-md-7 col-xs-12", @type = "number", @required = "required" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="MName">
+                                Tank Quantity <span class="required">*</span>
+                            </label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                @Html.TextBoxFor(m => m.TankQuantity, new { @class = "form-control col-md-7 col-xs-12", @type = "number", @required = "required" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="LName">
+                                Description <span class="required">*</span>
+                            </label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                @Html.TextBoxFor(m => m.ItemDescription, new { @class = "form-control col-md-7 col-xs-12", @required = "required" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="Email">
+                                Unit Price <span class="required">&nbsp;</span>
+                            </label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                @Html.TextBoxFor(m => m.UnitPrice, new { @class = "form-control col-md-7 col-xs-12" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="Password">
+                                Total <span class="required">*</span>
+                            </label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                @Html.TextBoxFor(m => m.TotalPrice, new { @class = "form-control col-md-7 col-xs-12" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="ConfirmPassword">
+                                Discount <span class="required">*</span>
+                            </label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                               @Html.TextBoxFor(m => m.Discount, new { @class = "form-control col-md-7 col-xs-12" })
+                            </div>
+                        </div>
+                        <div class="ln_solid"></div>
+                        <div class="form-group">
+                            <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+                                <button type="submit" class="btn btn-primary">Cancel</button>
+                                <button type="submit" class="btn btn-success">Add Items</button>
+                            </div>
+                        </div>
+                        @*</form>*@
+                    }
+                </div>
+            </div>
+        </div>
+        <br />
+        <br />
+        <br />
+    </div>
+    <div class="clearfix"></div>
+</div>
+    
+
