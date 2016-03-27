@@ -906,6 +906,7 @@
     <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Admin\Views\Quotation\QuotationDetails.cshtml" />
     <Content Include="Areas\Admin\Views\Quotation\AddItemsForQuotation.cshtml" />
+    <Content Include="Areas\Admin\Views\Expense\AddNewExpense.cshtml" />
     <None Include="bin\TownCleanWeb.dll.config" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery.validate.js" />
@@ -932,6 +933,7 @@
     <Compile Include="App_Start\UnityMvcActivator.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\ExpenseController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
     <Compile Include="Areas\Admin\Controllers\QuotationController.cs" />
     <Compile Include="Controllers\AccountController.cs" />

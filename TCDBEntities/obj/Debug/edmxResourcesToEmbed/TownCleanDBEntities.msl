@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="TownClean_DBModelStoreContainer" CdmEntityContainer="TownClean_DBEntities">
-    <EntitySetMapping Name="BranchMasters">
-      <EntityTypeMapping TypeName="TownClean_DBModel.BranchMaster">
-        <MappingFragment StoreEntitySet="BranchMaster">
-          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+    <EntitySetMapping Name="Branches">
+      <EntityTypeMapping TypeName="TownClean_DBModel.Branch">
+        <MappingFragment StoreEntitySet="Branch">
+          <ScalarProperty Name="CityID" ColumnName="CityID" />
           <ScalarProperty Name="Email" ColumnName="Email" />
           <ScalarProperty Name="Phone" ColumnName="Phone" />
           <ScalarProperty Name="Address" ColumnName="Address" />
@@ -13,11 +13,71 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="Cities">
+      <EntityTypeMapping TypeName="TownClean_DBModel.City">
+        <MappingFragment StoreEntitySet="City">
+          <ScalarProperty Name="STDCode" ColumnName="STDCode" />
+          <ScalarProperty Name="CityName" ColumnName="CityName" />
+          <ScalarProperty Name="CityID" ColumnName="CityID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Customers">
+      <EntityTypeMapping TypeName="TownClean_DBModel.Customer">
+        <MappingFragment StoreEntitySet="Customer">
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="BranchID" ColumnName="BranchID" />
+          <ScalarProperty Name="CustomerTypeID" ColumnName="CustomerTypeID" />
+          <ScalarProperty Name="Pin" ColumnName="Pin" />
+          <ScalarProperty Name="CityID" ColumnName="CityID" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="CustomerLastName" ColumnName="CustomerLastName" />
+          <ScalarProperty Name="CustomerMidName" ColumnName="CustomerMidName" />
+          <ScalarProperty Name="CustomerFirstName" ColumnName="CustomerFirstName" />
+          <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CustomerTypes">
+      <EntityTypeMapping TypeName="TownClean_DBModel.CustomerType">
+        <MappingFragment StoreEntitySet="CustomerType">
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="CustomerTypeName" ColumnName="CustomerTypeName" />
+          <ScalarProperty Name="CustomerTypeID" ColumnName="CustomerTypeID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Expenses">
+      <EntityTypeMapping TypeName="TownClean_DBModel.Expense">
+        <MappingFragment StoreEntitySet="Expense">
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="BranchID" ColumnName="BranchID" />
+          <ScalarProperty Name="Attachment_Url" ColumnName="Attachment_Url" />
+          <ScalarProperty Name="PaymentModeNo" ColumnName="PaymentModeNo" />
+          <ScalarProperty Name="PaymentMode" ColumnName="PaymentMode" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="ExpenseDate" ColumnName="ExpenseDate" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="ExpenseType" ColumnName="ExpenseType" />
+          <ScalarProperty Name="ExpenseName" ColumnName="ExpenseName" />
+          <ScalarProperty Name="ExpenseID" ColumnName="ExpenseID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="Quotations">
       <EntityTypeMapping TypeName="TownClean_DBModel.Quotation">
         <MappingFragment StoreEntitySet="Quotation">
-          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
-          <ScalarProperty Name="IsSent" ColumnName="IsSent" />
+          <ScalarProperty Name="Comment" ColumnName="Comment" />
           <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
           <ScalarProperty Name="BranchID" ColumnName="BranchID" />
           <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
@@ -39,8 +99,6 @@
     <EntitySetMapping Name="QuotationDetails">
       <EntityTypeMapping TypeName="TownClean_DBModel.QuotationDetail">
         <MappingFragment StoreEntitySet="QuotationDetails">
-          <ScalarProperty Name="IsSent" ColumnName="IsSent" />
-          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
           <ScalarProperty Name="TotalPrice" ColumnName="TotalPrice" />
           <ScalarProperty Name="Discount" ColumnName="Discount" />
           <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
@@ -52,10 +110,10 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="QuotationServiceMasters">
-      <EntityTypeMapping TypeName="TownClean_DBModel.QuotationServiceMaster">
-        <MappingFragment StoreEntitySet="QuotationServiceMaster">
-          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+    <EntitySetMapping Name="QuotationServiceTypes">
+      <EntityTypeMapping TypeName="TownClean_DBModel.QuotationServiceType">
+        <MappingFragment StoreEntitySet="QuotationServiceType">
+          <ScalarProperty Name="ShortCode" ColumnName="ShortCode" />
           <ScalarProperty Name="ServiceTypeName" ColumnName="ServiceTypeName" />
           <ScalarProperty Name="ServiceTypeID" ColumnName="ServiceTypeID" />
         </MappingFragment>

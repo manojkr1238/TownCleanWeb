@@ -61,4 +61,18 @@ namespace TCServices
         int UpdateCustomer(CustomerType customer);
         int InsertCustomer(CustomerType customer);
     }
+    public interface IExpenseService
+    {
+        IQueryable<Expense> GetAllExpenses();
+        Expense GetExpenseById(int id);
+      
+        IEnumerable<Expense> GetAllExpenseListBranchWise(int branchid);
+       
+      
+        int DeleteExpense(int id);
+        int UpdateExpense(Expense expense);
+        int InsertExpense(Expense expense);
+       
+    }
+
 }

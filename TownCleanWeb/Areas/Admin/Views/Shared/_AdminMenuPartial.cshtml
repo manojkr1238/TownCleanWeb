@@ -65,14 +65,14 @@
                     </ul>
                 </li>
                 <li>
-                    <a><i class="fa fa-table"></i> Tables <span class="fa fa-chevron-down"></span></a>
+                    <a><i class="fa fa-table"></i> Expense <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu" style="display: none">
                         <li>
-                            <a href="tables.html">Tables</a>
+                            <a href="@Url.Action("ExpenseList", "Admin/Expense")">Expense List</a>
                         </li>
                         <li>
-                            <a href="tables_dynamic.html">Table Dynamic</a>
-                        </li>
+                            <a href="@Url.Action("AddNewExpense", "Admin/Expense")">Create New Expense</a>
+                        </li>                        
                     </ul>
                 </li>
                 <li>

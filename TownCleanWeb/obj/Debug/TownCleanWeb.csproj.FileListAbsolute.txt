@@ -67,3 +67,15 @@ D:\TC\TownCleanWeb\TownCleanWeb\bin\TCDBEntities.pdb
 D:\TC\TownCleanWeb\TownCleanWeb\bin\TCRepositories.pdb
 D:\TC\TownCleanWeb\TownCleanWeb\bin\TCServices.pdb
 D:\TC\TownCleanWeb\TownCleanWeb\obj\Debug\TownCleanWeb.csprojResolveAssemblyReference.cache
+E:\Brajesh\TCCode\TownCleanWeb\TownCleanWeb\bin\TownCleanWeb.dll.config
+E:\Brajesh\TCCode\TownCleanWeb\TownCleanWeb\bin\TownCleanWeb.dll
+E:\Brajesh\TCCode\TownCleanWeb\TownCleanWeb\bin\TownCleanWeb.pdb
+E:\Brajesh\TCCode\TownCleanWeb\TownCleanWeb\bin\TCDBEntities.dll
+E:\Brajesh\TCCode\TownCleanWeb\TownCleanWeb\bin\TCRepositories.dll
+E:\Brajesh\TCCode\TownCleanWeb\TownCleanWeb\bin\TCServices.dll
+E:\Brajesh\TCCode\TownCleanWeb\TownCleanWeb\bin\TCDBEntities.pdb
+E:\Brajesh\TCCode\TownCleanWeb\TownCleanWeb\bin\TCRepositories.pdb
+E:\Brajesh\TCCode\TownCleanWeb\TownCleanWeb\bin\TCServices.pdb
+E:\Brajesh\TCCode\TownCleanWeb\TownCleanWeb\obj\Debug\TownCleanWeb.csprojResolveAssemblyReference.cache
+E:\Brajesh\TCCode\TownCleanWeb\TownCleanWeb\obj\Debug\TownCleanWeb.dll
+E:\Brajesh\TCCode\TownCleanWeb\TownCleanWeb\obj\Debug\TownCleanWeb.pdb

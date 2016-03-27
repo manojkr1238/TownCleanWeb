@@ -7,3 +7,12 @@ D:\TC\TownCleanWeb\TCDBEntities\bin\Debug\EntityFramework.xml
 D:\TC\TownCleanWeb\TCDBEntities\bin\Debug\EntityFramework.SqlServer.xml
 D:\TC\TownCleanWeb\TCDBEntities\obj\Debug\TCDBEntities.dll
 D:\TC\TownCleanWeb\TCDBEntities\obj\Debug\TCDBEntities.pdb
+E:\Brajesh\TCCode\TownCleanWeb\TCDBEntities\obj\Debug\TCDBEntities.dll
+E:\Brajesh\TCCode\TownCleanWeb\TCDBEntities\obj\Debug\TCDBEntities.pdb
+E:\Brajesh\TCCode\TownCleanWeb\TCDBEntities\bin\Debug\TCDBEntities.dll.config
+E:\Brajesh\TCCode\TownCleanWeb\TCDBEntities\bin\Debug\TCDBEntities.dll
+E:\Brajesh\TCCode\TownCleanWeb\TCDBEntities\bin\Debug\TCDBEntities.pdb
+E:\Brajesh\TCCode\TownCleanWeb\TCDBEntities\bin\Debug\EntityFramework.dll
+E:\Brajesh\TCCode\TownCleanWeb\TCDBEntities\bin\Debug\EntityFramework.SqlServer.dll
+E:\Brajesh\TCCode\TownCleanWeb\TCDBEntities\bin\Debug\EntityFramework.xml
+E:\Brajesh\TCCode\TownCleanWeb\TCDBEntities\bin\Debug\EntityFramework.SqlServer.xml

@@ -55,4 +55,51 @@ namespace TCDBEntities
         public SelectList CustomerList { get; set; }
 
     }
+    public class ExpenseSummary
+    {
+        public int ExpenseID { get; set; }
+        public string ExpenseName { get; set; }
+        public string ExpenseType { get; set; }
+        public string Amount { get; set; }
+        public string ExpenseDate { get; set; }
+        public string Description { get; set; }
+        public DateTime PaymentMode { get; set; }
+        public decimal? Attachment_Url { get; set; }
+       
+    }
+    public class InsertExpense
+    {
+        [Required]
+        public string ExpenseName { get; set; }
+
+        [Required]
+        public string ExpenseType { get; set; }
+
+        public string Amount { get; set; }
+
+        [Required]
+        public string ExpenseDate { get; set; }
+
+        [Required]
+        public string PaymentMode { get; set; }
+        [Required]
+        public string Description { get; set; }
+
+        public string Attachment_Url { get; set; }
+
+        public int? CustomerID { get; set; }
+
+        //[Required]
+        //public int BranchID { get; set; }
+
+        //[Required]
+        //public string CreatedBy { get; set; }
+
+        public SelectList CustomerTypeList { get; set; }
+        public SelectList ExpenseServiceTypeList { get; set; }
+        public SelectList CustomerList { get; set; }
+
+
+        public bool IsExitingExpense { get; set; }
+    }
 }

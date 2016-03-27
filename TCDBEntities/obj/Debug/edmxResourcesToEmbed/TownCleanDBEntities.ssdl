@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="TownClean_DBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-  <EntityType Name="BranchMaster">
+  <EntityType Name="Branch">
     <Key>
       <PropertyRef Name="BranchID" />
     </Key>
@@ -9,6 +9,63 @@
     <Property Name="Address" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Phone" Type="nvarchar(max)" />
     <Property Name="Email" Type="nvarchar(max)" />
+    <Property Name="CityID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="City">
+    <Key>
+      <PropertyRef Name="CityID" />
+    </Key>
+    <Property Name="CityID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CityName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="STDCode" Type="nvarchar" MaxLength="5" />
+  </EntityType>
+  <EntityType Name="Customer">
+    <Key>
+      <PropertyRef Name="CustomerID" />
+    </Key>
+    <Property Name="CustomerID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CustomerFirstName" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="CustomerMidName" Type="nvarchar" MaxLength="30" />
+    <Property Name="CustomerLastName" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="Address" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Email" Type="nvarchar" MaxLength="50" />
+    <Property Name="Phone" Type="varchar" MaxLength="13" Nullable="false" />
+    <Property Name="CityID" Type="int" Nullable="false" />
+    <Property Name="Pin" Type="nvarchar" MaxLength="6" Nullable="false" />
+    <Property Name="CustomerTypeID" Type="int" Nullable="false" />
+    <Property Name="BranchID" Type="int" Nullable="false" />
+    <Property Name="IsDeleted" Type="bit" Nullable="false" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="ModifiedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="CustomerType">
+    <Key>
+      <PropertyRef Name="CustomerTypeID" />
+    </Key>
+    <Property Name="CustomerTypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CustomerTypeName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="IsDeleted" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Expense">
+    <Key>
+      <PropertyRef Name="ExpenseID" />
+    </Key>
+    <Property Name="ExpenseID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ExpenseName" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="ExpenseType" Type="nvarchar" MaxLength="100" />
+    <Property Name="Amount" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="ExpenseDate" Type="nchar" MaxLength="10" />
+    <Property Name="Description" Type="nvarchar(max)" />
+    <Property Name="PaymentMode" Type="nvarchar" MaxLength="20" />
+    <Property Name="PaymentModeNo" Type="nvarchar" MaxLength="20" />
+    <Property Name="Attachment_Url" Type="nvarchar(max)" />
+    <Property Name="BranchID" Type="int" Nullable="false" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="ModifiedDate" Type="datetime" />
     <Property Name="IsDeleted" Type="bit" Nullable="false" />
   </EntityType>
   <EntityType Name="Quotation">
@@ -30,8 +87,7 @@
     <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
     <Property Name="BranchID" Type="int" Nullable="false" />
     <Property Name="CustomerID" Type="int" />
-    <Property Name="IsSent" Type="bit" Nullable="false" />
-    <Property Name="IsDeleted" Type="bit" Nullable="false" />
+    <Property Name="Comment" Type="nvarchar(max)" />
   </EntityType>
   <EntityType Name="QuotationDetails">
     <Key>
@@ -45,22 +101,20 @@
     <Property Name="UnitPrice" Type="decimal" Precision="18" Scale="4" />
     <Property Name="Discount" Type="decimal" Precision="18" Scale="4" />
     <Property Name="TotalPrice" Type="decimal" Precision="18" Scale="4" />
-    <Property Name="IsDeleted" Type="bit" Nullable="false" />
-    <Property Name="IsSent" Type="bit" />
   </EntityType>
-  <EntityType Name="QuotationServiceMaster">
+  <EntityType Name="QuotationServiceType">
     <Key>
       <PropertyRef Name="ServiceTypeID" />
     </Key>
     <Property Name="ServiceTypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="ServiceTypeName" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="IsDeleted" Type="bit" Nullable="false" />
+    <Property Name="ShortCode" Type="nvarchar" MaxLength="4" Nullable="false" />
   </EntityType>
-  <Association Name="FK__Quotation__Branc__2F10007B">
-    <End Role="BranchMaster" Type="Self.BranchMaster" Multiplicity="1" />
+  <Association Name="FK__Quotation__Branc__35BCFE0A">
+    <End Role="Branch" Type="Self.Branch" Multiplicity="1" />
     <End Role="Quotation" Type="Self.Quotation" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="BranchMaster">
+      <Principal Role="Branch">
         <PropertyRef Name="BranchID" />
       </Principal>
       <Dependent Role="Quotation">
@@ -68,11 +122,107 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_Quotation_Details_Quotation_Details">
-    <End Role="QuotationServiceMaster" Type="Self.QuotationServiceMaster" Multiplicity="1" />
+  <Association Name="FK_BranchMaster_City">
+    <End Role="City" Type="Self.City" Multiplicity="1" />
+    <End Role="Branch" Type="Self.Branch" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="City">
+        <PropertyRef Name="CityID" />
+      </Principal>
+      <Dependent Role="Branch">
+        <PropertyRef Name="CityID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Customer_BranchMaster">
+    <End Role="Branch" Type="Self.Branch" Multiplicity="1" />
+    <End Role="Customer" Type="Self.Customer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Branch">
+        <PropertyRef Name="BranchID" />
+      </Principal>
+      <Dependent Role="Customer">
+        <PropertyRef Name="BranchID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Customer_City">
+    <End Role="City" Type="Self.City" Multiplicity="1" />
+    <End Role="Customer" Type="Self.Customer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="City">
+        <PropertyRef Name="CityID" />
+      </Principal>
+      <Dependent Role="Customer">
+        <PropertyRef Name="CityID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Customer_CustomerType">
+    <End Role="CustomerType" Type="Self.CustomerType" Multiplicity="1" />
+    <End Role="Customer" Type="Self.Customer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CustomerType">
+        <PropertyRef Name="CustomerTypeID" />
+      </Principal>
+      <Dependent Role="Customer">
+        <PropertyRef Name="CustomerTypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CustomerType_CustomerType">
+    <End Role="CustomerType" Type="Self.CustomerType" Multiplicity="1" />
+    <End Role="CustomerType1" Type="Self.CustomerType" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="CustomerType">
+        <PropertyRef Name="CustomerTypeID" />
+      </Principal>
+      <Dependent Role="CustomerType1">
+        <PropertyRef Name="CustomerTypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Expense_Details_BranchMaster">
+    <End Role="Branch" Type="Self.Branch" Multiplicity="1" />
+    <End Role="Expense" Type="Self.Expense" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Branch">
+        <PropertyRef Name="BranchID" />
+      </Principal>
+      <Dependent Role="Expense">
+        <PropertyRef Name="BranchID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Quotation_Customer">
+    <End Role="Customer" Type="Self.Customer" Multiplicity="0..1" />
     <End Role="Quotation" Type="Self.Quotation" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="QuotationServiceMaster">
+      <Principal Role="Customer">
+        <PropertyRef Name="CustomerID" />
+      </Principal>
+      <Dependent Role="Quotation">
+        <PropertyRef Name="CustomerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Quotation_CustomerType">
+    <End Role="CustomerType" Type="Self.CustomerType" Multiplicity="1" />
+    <End Role="Quotation" Type="Self.Quotation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CustomerType">
+        <PropertyRef Name="CustomerTypeID" />
+      </Principal>
+      <Dependent Role="Quotation">
+        <PropertyRef Name="CustomerTypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Quotation_Details_Quotation_Details">
+    <End Role="QuotationServiceType" Type="Self.QuotationServiceType" Multiplicity="1" />
+    <End Role="Quotation" Type="Self.Quotation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="QuotationServiceType">
         <PropertyRef Name="ServiceTypeID" />
       </Principal>
       <Dependent Role="Quotation">
@@ -93,16 +243,52 @@
     </ReferentialConstraint>
   </Association>
   <EntityContainer Name="TownClean_DBModelStoreContainer">
-    <EntitySet Name="BranchMaster" EntityType="Self.BranchMaster" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Branch" EntityType="Self.Branch" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="City" EntityType="Self.City" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Customer" EntityType="Self.Customer" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CustomerType" EntityType="Self.CustomerType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Expense" EntityType="Self.Expense" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Quotation" EntityType="Self.Quotation" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="QuotationDetails" EntityType="Self.QuotationDetails" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="QuotationServiceMaster" EntityType="Self.QuotationServiceMaster" Schema="dbo" store:Type="Tables" />
-    <AssociationSet Name="FK__Quotation__Branc__2F10007B" Association="Self.FK__Quotation__Branc__2F10007B">
-      <End Role="BranchMaster" EntitySet="BranchMaster" />
+    <EntitySet Name="QuotationServiceType" EntityType="Self.QuotationServiceType" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__Quotation__Branc__35BCFE0A" Association="Self.FK__Quotation__Branc__35BCFE0A">
+      <End Role="Branch" EntitySet="Branch" />
+      <End Role="Quotation" EntitySet="Quotation" />
+    </AssociationSet>
+    <AssociationSet Name="FK_BranchMaster_City" Association="Self.FK_BranchMaster_City">
+      <End Role="City" EntitySet="City" />
+      <End Role="Branch" EntitySet="Branch" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Customer_BranchMaster" Association="Self.FK_Customer_BranchMaster">
+      <End Role="Branch" EntitySet="Branch" />
+      <End Role="Customer" EntitySet="Customer" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Customer_City" Association="Self.FK_Customer_City">
+      <End Role="City" EntitySet="City" />
+      <End Role="Customer" EntitySet="Customer" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Customer_CustomerType" Association="Self.FK_Customer_CustomerType">
+      <End Role="CustomerType" EntitySet="CustomerType" />
+      <End Role="Customer" EntitySet="Customer" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CustomerType_CustomerType" Association="Self.FK_CustomerType_CustomerType">
+      <End Role="CustomerType" EntitySet="CustomerType" />
+      <End Role="CustomerType1" EntitySet="CustomerType" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Expense_Details_BranchMaster" Association="Self.FK_Expense_Details_BranchMaster">
+      <End Role="Branch" EntitySet="Branch" />
+      <End Role="Expense" EntitySet="Expense" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Quotation_Customer" Association="Self.FK_Quotation_Customer">
+      <End Role="Customer" EntitySet="Customer" />
+      <End Role="Quotation" EntitySet="Quotation" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Quotation_CustomerType" Association="Self.FK_Quotation_CustomerType">
+      <End Role="CustomerType" EntitySet="CustomerType" />
       <End Role="Quotation" EntitySet="Quotation" />
     </AssociationSet>
     <AssociationSet Name="FK_Quotation_Details_Quotation_Details" Association="Self.FK_Quotation_Details_Quotation_Details">
-      <End Role="QuotationServiceMaster" EntitySet="QuotationServiceMaster" />
+      <End Role="QuotationServiceType" EntitySet="QuotationServiceType" />
       <End Role="Quotation" EntitySet="Quotation" />
     </AssociationSet>
     <AssociationSet Name="FK_Quotation_Item_Details_Quotation_Details" Association="Self.FK_Quotation_Item_Details_Quotation_Details">
