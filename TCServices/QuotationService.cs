@@ -58,7 +58,7 @@ namespace TCServices
             quotation.CreatedDate = DateTime.Now;
             return _genericRepository.Insert(quotation);
         }
-
+        
         public IEnumerable<QuotationSummary> GetQuotationSummaryList()
         {
             return _genericRepository.GetAll().Select(q => new QuotationSummary

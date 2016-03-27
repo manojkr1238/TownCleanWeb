@@ -18,67 +18,41 @@
                         @Html.AntiForgeryToken()
                         @*<form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">*@
                         <div class="form-group">
-                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="FName">
-                                Contact Name <span class="required">*</span>
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="ExpenseName">
+                                Expense Name <span class="required">*</span>
                             </label>
                             <div class="col-md-6 col-sm-6 col-xs-12">
                                 @Html.TextBoxFor(m => m.ExpenseName, new { @class = "form-control col-md-7 col-xs-12", @required = "required" })
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="MName">
-                                Address <span class="required">*</span>
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="ExpenseType">
+                                Expense Type <span class="required">*</span>
                             </label>
                             <div class="col-md-6 col-sm-6 col-xs-12">
                                 @Html.TextBoxFor(m => m.ExpenseType, new { @class = "form-control col-md-7 col-xs-12", @required = "required" })
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="LName">
-                                Phone <span class="required">*</span>
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="Amount">
+                                Amount <span class="required">*</span>
                             </label>
                             <div class="col-md-6 col-sm-6 col-xs-12">
                                 @Html.TextBoxFor(m => m.Amount, new { @class = "form-control col-md-7 col-xs-12", @required = "required" })
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="Email">
-                                Email <span class="required">&nbsp;</span>
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="ExpenseDate">
+                                Expense Date <span class="required">&nbsp;</span>
                             </label>
                             <div class="col-md-6 col-sm-6 col-xs-12">
                                 @Html.TextBoxFor(m => m.ExpenseDate, new { @class = "form-control col-md-7 col-xs-12" })
                             </div>
                         </div>
-                        <div class="form-group">
-                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="Password">
-                                Customer Type <span class="required">*</span>
-                            </label>
-                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                @Html.DropDownListFor(m => m.Description, Model.CustomerTypeList, "  ----- Select Customer Type -----  ", new { @class = "form-control col-md-7 col-xs-12" })
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="ConfirmPassword">
-                                Service Type <span class="required">*</span>
-                            </label>
-                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                @Html.DropDownListFor(m => m.PaymentMode, Model.ExpenseServiceTypeList, "  ----- Select Service Type -----  ", new { @class = "form-control col-md-7 col-xs-12", @required = "required" })
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="ConfirmPassword">
-                                Are You Creating Expense For Existing Customer? <span class="required">&nbsp;</span>
-                            </label>
-                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                @Html.CheckBoxFor(m => m.IsExitingExpense, new { @id = "chkForExistingCustomer" })
-                            </div>
-                        </div>
-                        <div id="DivCustomer" class="form-group">
-                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="Mobile">
-                                Customer Name <span class="required">*</span>
-                            </label>
-                            
-                        </div>
+                       
+                        
+                       
+                        
                         <div class="ln_solid"></div>
                         <div class="form-group">
                             <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">

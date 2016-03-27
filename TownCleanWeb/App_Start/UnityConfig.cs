@@ -49,6 +49,7 @@ namespace TownCleanWeb.App_Start
             container.RegisterType<IUserStore<ApplicationUser>, UserStore<ApplicationUser>>(new InjectionConstructor(typeof(ApplicationDbContext)));
 
             container.RegisterType<IQuotationService, QuotationService>(new InjectionConstructor(typeof(TCDBEntities.TownClean_DBEntities)));
+            container.RegisterType<IExpenseService, ExpenseService>(new InjectionConstructor(typeof(TCDBEntities.TownClean_DBEntities)));
         }
     }
 }

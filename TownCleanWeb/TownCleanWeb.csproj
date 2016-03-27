@@ -907,6 +907,7 @@
     <Content Include="Areas\Admin\Views\Quotation\QuotationDetails.cshtml" />
     <Content Include="Areas\Admin\Views\Quotation\AddItemsForQuotation.cshtml" />
     <Content Include="Areas\Admin\Views\Expense\AddNewExpense.cshtml" />
+    <Content Include="Areas\Admin\Views\Expense\ExpenseList.cshtml" />
     <None Include="bin\TownCleanWeb.dll.config" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery.validate.js" />
