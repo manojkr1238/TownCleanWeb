@@ -25,13 +25,22 @@ namespace TownCleanWeb.Areas.Admin.Controllers
             var Expense = _ExpenseService.GetExpenseById(id);
             return View(Expense);
         }
-       
+
+        public ActionResult AddNewExpense()
+        {
+            return View();
+        }
+        public ActionResult ExpenseList()
+        {
+            var quotationList = _expenseService.GetExpenseSummaryList().ToList();
+            return View(expenseList);
+        }
        
 
         [HttpPost]
-        public ActionResult AddNewExpense(InsertExpense model)
+        public ActionResult AddNewExpense(Expense model)
         {
-            int i = 0;
+            
             if (!ModelState.IsValid)
             {
                 return View(model);
@@ -46,36 +55,17 @@ namespace TownCleanWeb.Areas.Admin.Controllers
             qc.Description = model.Description;
             qc.PaymentMode = model.PaymentMode;
             qc.Attachment_Url = model.Attachment_Url;
-           qc.ExpenseID = Convert.ToInt32(model.CustomerID);
+           qc.ExpenseID = Convert.ToInt32(model.ExpenseID);
             qc.BranchID = branchID;
             qc.CreatedBy = userName;
-            if (model.IsExitingExpense)
-                qc.ExpenseName = model.ExpenseName;
-            else
-                qc.ExpenseName = null;
-
-            i = _ExpenseService.InsertExpense(qc);
-            if (i > 0)
-                return RedirectToAction("AddItemsForExpense", new { id = qc.ExpenseID });
-            else
-            {
+           
                 return View(model);
             }
-        }
 
-
-        //[Route("ExpenseNo/{id}")]
-        public ActionResult AddItemsForExpense(int id)
-        {
-            Expense qc = _ExpenseService.GetExpenseById(id);
-            ViewBag.Qtc = qc;
-            return View();
-        }
-
-        [HttpPost]
-        public ActionResult AddItemsForExpense(Expense ExpenseDetail)
-        {
-            return View();
-        }
+      
     }
-}
+
+
+      
+     
+    }

@@ -21,7 +21,7 @@
                                 <th>Description</th>
                                 <th>Payment Mode </th>
                                 <th>Attachment Url </th>
-                               
+
                                 <th class=" no-link last">
                                     <span class="nobr">View</span>
                                 </th>
@@ -39,7 +39,7 @@
                                             <td class="a-center ">
                                                 @quot[i].ExpenseName
                                             </td>
-                                           
+
                                             <td class=" ">@quot[i].ExpenseType </td>
                                             <td class=" ">@quot[i].ExpenseDate</td>
                                             <td class=" ">
@@ -48,7 +48,7 @@
                                                 Phone: @quot[i].PaymentMode
                                             </td>
                                             <td class=" ">@quot[i].Attachment_Url</td>
-                                            
+
                                             <td class=" last">
                                                 @Html.ActionLink("View", "ExpenseDetails", new { id = @quot[i].ExpenseID })
                                             </td>

@@ -67,6 +67,7 @@ namespace TCServices
         Expense GetExpenseById(int id);
       
         IEnumerable<Expense> GetAllExpenseListBranchWise(int branchid);
+        IEnumerable<ExpenseSummary> GetExpenseSummaryList();
        
       
         int DeleteExpense(int id);

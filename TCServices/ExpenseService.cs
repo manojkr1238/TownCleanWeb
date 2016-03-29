@@ -49,8 +49,27 @@ namespace TCServices
              return _genericRepository.Insert(expense);
          }
 
-        
 
-      
+
+          IEnumerable<ExpenseSummary> IExpenseService.GetExpenseSummaryList()
+          {
+              return _genericRepository.GetAll().Select(q => new ExpenseSummary
+              {
+                  ExpenseID = q.ExpenseID,
+                  ExpenseName = q.ExpenseName,
+                  ExpenseType = q.ExpenseType,
+                  
+                 
+                  ExpenseDate = q.ExpenseDate,
+                  Description = q.Description,
+                 
+              });
+          }
+
+
+
+
+
+         
     }
 }
