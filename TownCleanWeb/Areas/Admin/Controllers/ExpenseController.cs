@@ -9,8 +9,12 @@ using TownCleanWeb.Controllers;
 
 namespace TownCleanWeb.Areas.Admin.Controllers
 {
+   
     public class ExpenseController : BaseController
     {
+
+        private TownClean_DBEntities db = new TownClean_DBEntities();
+        
         private IExpenseService _ExpenseService;
 
         public ExpenseController(IExpenseService ExpenseService)
@@ -25,44 +29,70 @@ namespace TownCleanWeb.Areas.Admin.Controllers
             var Expense = _ExpenseService.GetExpenseById(id);
             return View(Expense);
         }
-
         public ActionResult AddNewExpense()
         {
+           
             return View();
         }
+     /*   [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult AddNewExpense([Bind(Include = "ExpenseId,ExpenseName,Amount,ExpenseType,DISCRIPTION")] Expense expense)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Expenses.Add(expense);
+                db.SaveChanges();
+               
+            }
+
+            return View(expense);
+        }*/
+
+    
+      
+      
         public ActionResult ExpenseList()
         {
-            var quotationList = _expenseService.GetExpenseSummaryList().ToList();
+            var expenseList = _ExpenseService.GetExpenseSummaryList().ToList();
             return View(expenseList);
         }
        
 
         [HttpPost]
-        public ActionResult AddNewExpense(Expense model)
+     public ActionResult AddNewExpense(InsertExpense model)
         {
-            
+            int i = 0;
             if (!ModelState.IsValid)
             {
                 return View(model);
             }
 
             Expense qc = new Expense();
-           
             qc.ExpenseName = model.ExpenseName;
             qc.ExpenseType = model.ExpenseType;
-            qc.Amount = Convert.ToDecimal(model.Amount);
+
             qc.ExpenseDate = model.ExpenseDate;
             qc.Description = model.Description;
             qc.PaymentMode = model.PaymentMode;
             qc.Attachment_Url = model.Attachment_Url;
-           qc.ExpenseID = Convert.ToInt32(model.ExpenseID);
             qc.BranchID = branchID;
             qc.CreatedBy = userName;
            
+            if (model.IsExitingExpense)
+                qc.ExpenseName = model.ExpenseName;
+            else
+                qc.ExpenseName = null;
+
+            i = _ExpenseService.InsertExpense(qc);
+            
+           
+            if (i > 0)
+                return RedirectToAction("AddItemsForExpense", new { id = qc.ExpenseID });
+            else
+            {
                 return View(model);
             }
-
-      
+        }
     }
 
 
