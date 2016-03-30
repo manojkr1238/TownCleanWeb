@@ -1,0 +1,152 @@
+﻿@model IEnumerable<TCDBEntities.Expense>
+
+@{
+    ViewBag.Title = "Add New Expense | Town Clean";
+}
+
+<div class="">
+    <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="x_panel">
+                <div class="x_title">
+                    <h2>@Html.ActionLink("Create New", "Create")</h2>
+                    <div class="clearfix"></div>
+                </div>
+ @using (Html.BeginForm("Index", "Expense", FormMethod.Post, new { @class = "form-horizontal form-label-left", role = "form" }))
+                    {
+      @Html.AntiForgeryToken()
+                        @*<form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">*@
+
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ExpenseName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ExpenseType)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Amount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ExpenseDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PaymentMode)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PaymentModeNo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Attachment_Url)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CreatedBy)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CreatedDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ModifiedBy)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ModifiedDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsDeleted)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Branch.BranchName)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ExpenseName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ExpenseType)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Amount)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ExpenseDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PaymentMode)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PaymentModeNo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Attachment_Url)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CreatedBy)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CreatedDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ModifiedBy)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ModifiedDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IsDeleted)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Branch.BranchName)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.ExpenseID }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.ExpenseID }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.ExpenseID })
+                </td>
+            </tr>
+        }
+
+    </table>
+                    }
+            </div>
+        </div>
+    </div>
+    <div class="clearfix"></div>
+</div>
+
+ 
+  
+@section JavaScript
+{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#txtCustomerName").val('');
+            $("#DivCustomer").hide();
+
+            $("#chkForExistingCustomer").change(function () {
+                if (this.checked)
+                {
+                    $("#DivCustomer").show();
+                }
+                else
+                {
+                    $("#DivCustomer").hide();
+                }
+            });
+        });
+
+
+    </script>
+    }
+

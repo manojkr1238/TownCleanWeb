@@ -44,11 +44,13 @@
     <Reference Include="Elmah.Mvc">
       <HintPath>..\packages\Elmah.Mvc.2.1.2\lib\net40\Elmah.Mvc.dll</HintPath>
     </Reference>
-    <Reference Include="EntityFramework">
-      <HintPath>..\..\Web_CMS\Web_CMS\bin\EntityFramework.dll</HintPath>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.6.0.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
-    <Reference Include="EntityFramework.SqlServer">
-      <HintPath>..\..\Web_CMS\Web_CMS\bin\EntityFramework.SqlServer.dll</HintPath>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.6.0.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.AspNet.Identity.Core">
       <HintPath>..\..\Web_CMS\Web_CMS\bin\Microsoft.AspNet.Identity.Core.dll</HintPath>
@@ -908,6 +910,11 @@
     <Content Include="Areas\Admin\Views\Quotation\AddItemsForQuotation.cshtml" />
     <Content Include="Areas\Admin\Views\Expense\AddNewExpense.cshtml" />
     <Content Include="Areas\Admin\Views\Expense\ExpenseList.cshtml" />
+    <Content Include="Areas\Admin\Views\Expenses\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Expenses\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Expenses\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\Expenses\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Expenses\Index.cshtml" />
     <None Include="bin\TownCleanWeb.dll.config" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery.validate.js" />
@@ -935,6 +942,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\ExpenseController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ExpensesController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
     <Compile Include="Areas\Admin\Controllers\QuotationController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
