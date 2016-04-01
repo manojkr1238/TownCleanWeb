@@ -70,8 +70,8 @@ E:\Brajesh\TCCode\TownCleanWeb\TownCleanWeb.Tests\bin\Debug\Microsoft.Owin.Secur
 E:\Brajesh\TCCode\TownCleanWeb\TownCleanWeb.Tests\bin\Debug\Owin.dll
 E:\Brajesh\TCCode\TownCleanWeb\TownCleanWeb.Tests\bin\Debug\Microsoft.Practices.Unity.dll
 E:\Brajesh\TCCode\TownCleanWeb\TownCleanWeb.Tests\bin\Debug\System.Web.Http.dll
-E:\Brajesh\TCCode\TownCleanWeb\TownCleanWeb.Tests\bin\Debug\TCServices.dll
 E:\Brajesh\TCCode\TownCleanWeb\TownCleanWeb.Tests\bin\Debug\TCDBEntities.dll
+E:\Brajesh\TCCode\TownCleanWeb\TownCleanWeb.Tests\bin\Debug\TCServices.dll
 E:\Brajesh\TCCode\TownCleanWeb\TownCleanWeb.Tests\bin\Debug\WebActivatorEx.dll
 E:\Brajesh\TCCode\TownCleanWeb\TownCleanWeb.Tests\bin\Debug\Elmah.dll
 E:\Brajesh\TCCode\TownCleanWeb\TownCleanWeb.Tests\bin\Debug\Microsoft.Owin.Security.Cookies.dll
@@ -87,8 +87,8 @@ E:\Brajesh\TCCode\TownCleanWeb\TownCleanWeb.Tests\bin\Debug\System.Net.Http.Form
 E:\Brajesh\TCCode\TownCleanWeb\TownCleanWeb.Tests\bin\Debug\TCRepositories.dll
 E:\Brajesh\TCCode\TownCleanWeb\TownCleanWeb.Tests\bin\Debug\System.Web.WebPages.Deployment.dll
 E:\Brajesh\TCCode\TownCleanWeb\TownCleanWeb.Tests\bin\Debug\TownCleanWeb.pdb
-E:\Brajesh\TCCode\TownCleanWeb\TownCleanWeb.Tests\bin\Debug\TCServices.pdb
 E:\Brajesh\TCCode\TownCleanWeb\TownCleanWeb.Tests\bin\Debug\TCDBEntities.pdb
+E:\Brajesh\TCCode\TownCleanWeb\TownCleanWeb.Tests\bin\Debug\TCServices.pdb
 E:\Brajesh\TCCode\TownCleanWeb\TownCleanWeb.Tests\bin\Debug\TCRepositories.pdb
 E:\Brajesh\TCCode\TownCleanWeb\TownCleanWeb.Tests\obj\Debug\TownCleanWeb.Tests.csprojResolveAssemblyReference.cache
 E:\Brajesh\TCCode\TownCleanWeb\TownCleanWeb.Tests\obj\Debug\TownCleanWeb.Tests.dll

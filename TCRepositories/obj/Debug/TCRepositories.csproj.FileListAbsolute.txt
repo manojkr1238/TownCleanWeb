@@ -11,6 +11,6 @@ E:\Brajesh\TCCode\TownCleanWeb\TCRepositories\bin\Debug\TCRepositories.dll
 E:\Brajesh\TCCode\TownCleanWeb\TCRepositories\bin\Debug\TCRepositories.pdb
 E:\Brajesh\TCCode\TownCleanWeb\TCRepositories\bin\Debug\TCDBEntities.dll
 E:\Brajesh\TCCode\TownCleanWeb\TCRepositories\bin\Debug\TCDBEntities.pdb
+E:\Brajesh\TCCode\TownCleanWeb\TCRepositories\obj\Debug\TCRepositories.csprojResolveAssemblyReference.cache
 E:\Brajesh\TCCode\TownCleanWeb\TCRepositories\obj\Debug\TCRepositories.dll
 E:\Brajesh\TCCode\TownCleanWeb\TCRepositories\obj\Debug\TCRepositories.pdb
-E:\Brajesh\TCCode\TownCleanWeb\TCRepositories\obj\Debug\TCRepositories.csprojResolveAssemblyReference.cache
