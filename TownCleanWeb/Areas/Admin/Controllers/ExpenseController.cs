@@ -34,23 +34,7 @@ namespace TownCleanWeb.Areas.Admin.Controllers
 
             return View();
         }
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ExpenseID,ExpenseName,ExpenseType,Amount,ExpenseDate,Description,PaymentMode,PaymentModeNo,Attachment_Url,BranchID,CreatedBy,CreatedDate,ModifiedBy,ModifiedDate,IsDeleted")] Expense expense)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Expenses.Add(expense);
-                db.SaveChanges();
-                
-            }
-
-            ViewBag.BranchID = new SelectList(db.Branches, "BranchID", "BranchName", expense.BranchID);
-            return View(expense);
-        }
-
-
-
+       
         public ActionResult ExpenseList()
         {
             var expenseList = _ExpenseService.GetExpenseSummaryList().ToList();
@@ -58,7 +42,8 @@ namespace TownCleanWeb.Areas.Admin.Controllers
         }
 
 
-       /* [HttpPost]
+        
+        [HttpPost]
         public ActionResult AddNewExpense(InsertExpense model)
         {
             int i = 0;
@@ -77,22 +62,18 @@ namespace TownCleanWeb.Areas.Admin.Controllers
             qc.Attachment_Url = model.Attachment_Url;
             qc.BranchID = branchID;
             qc.CreatedBy = userName;
-
-            if (model.IsExitingExpense)
-                qc.ExpenseName = model.ExpenseName;
-            else
-                qc.ExpenseName = null;
+            qc.CreatedDate = DateTime.Now;            
 
             i = _ExpenseService.InsertExpense(qc);
 
 
             if (i > 0)
-                return RedirectToAction("AddItemsForExpense", new { id = qc.ExpenseID });
+                return RedirectToAction("ExpenseList");
             else
             {
                 return View(model);
             }
-        }*/
+        }
     }
 
 

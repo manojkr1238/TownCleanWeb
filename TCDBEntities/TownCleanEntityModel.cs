@@ -87,7 +87,7 @@ namespace TCDBEntities
 
         public string Attachment_Url { get; set; }
 
-        public int? CustomerID { get; set; }
+        //public int? CustomerID { get; set; }
 
         //[Required]
         //public int BranchID { get; set; }
@@ -95,9 +95,9 @@ namespace TCDBEntities
         //[Required]
         //public string CreatedBy { get; set; }
 
-        public SelectList CustomerTypeList { get; set; }
-        public SelectList ExpenseServiceTypeList { get; set; }
-        public SelectList CustomerList { get; set; }
+        //public SelectList CustomerTypeList { get; set; }
+       // public SelectList ExpenseServiceTypeList { get; set; }
+        //public SelectList CustomerList { get; set; }
 
 
         public bool IsExitingExpense { get; set; }

@@ -16,4 +16,3 @@ E:\Brajesh\TCCode\TownCleanWeb\TCDBEntities\bin\Debug\EntityFramework.xml
 E:\Brajesh\TCCode\TownCleanWeb\TCDBEntities\bin\Debug\EntityFramework.SqlServer.xml
 E:\Brajesh\TCCode\TownCleanWeb\TCDBEntities\obj\Debug\TCDBEntities.dll
 E:\Brajesh\TCCode\TownCleanWeb\TCDBEntities\obj\Debug\TCDBEntities.pdb
-E:\Brajesh\TCCode\TownCleanWeb\TCDBEntities\obj\Debug\TCDBEntities.csprojResolveAssemblyReference.cache
