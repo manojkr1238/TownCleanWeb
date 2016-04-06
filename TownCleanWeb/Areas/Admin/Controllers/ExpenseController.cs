@@ -5,7 +5,10 @@ using System.Web;
 using System.Web.Mvc;
 using TCServices;
 using TCDBEntities;
+using TCDBEntities;
 using TownCleanWeb.Controllers;
+using OfficeOpenXml;
+using System.IO;
 
 namespace TownCleanWeb.Areas.Admin.Controllers
 {
@@ -40,6 +43,50 @@ namespace TownCleanWeb.Areas.Admin.Controllers
             var expenseList = _ExpenseService.GetExpenseSummaryList().ToList();
             return View(expenseList);
         }
+        public ActionResult ExpenseReport()
+        {
+            
+            return View();
+        }
+
+       public ActionResult DownloadExpenseExcel()
+        {
+            var expenseList = _ExpenseService.GetExpenseSummaryList().ToList();
+            using (ExcelPackage pck = new ExcelPackage())
+            {
+                ExcelWorksheet ws = pck.Workbook.Worksheets.Add("Expenses");
+                ws.Cells["A1"].LoadFromCollection(expenseList, true);
+                // Load your collection "accounts"
+
+                Byte[] fileBytes = pck.GetAsByteArray();
+                Response.Clear();
+                Response.Buffer = true;
+                Response.AddHeader("content-disposition", "attachment;filename=DataTable.xlsx");
+                // Replace filename with your custom Excel-sheet name.
+
+                Response.Charset = "";
+                Response.ContentType = "application/vnd.ms-excel";
+                StringWriter sw = new StringWriter();
+                Response.BinaryWrite(fileBytes);
+                Response.End();
+
+            }
+
+            return RedirectToAction("DownloadExpenseExcel");
+        }
+
+
+         /* IEnumerable<object[]> GetAsEnumerable(MultiDimDictList table)
+{
+  yield return table.Columns.Select(i => (object)i.Name).ToArray();
+
+  foreach (var row in table)
+  {
+    yield return table.Columns.Select(i => (object)row[i.Name]).ToArray();
+  }
+}
+
+        }*/
 
 
         
@@ -60,6 +107,7 @@ namespace TownCleanWeb.Areas.Admin.Controllers
             qc.Description = model.Description;
             qc.PaymentMode = model.PaymentMode;
             qc.Attachment_Url = model.Attachment_Url;
+            qc.PaymentModeNo = model.PaymentModeNo;
             qc.BranchID = branchID;
             qc.CreatedBy = userName;
             qc.CreatedDate = DateTime.Now;            

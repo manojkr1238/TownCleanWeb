@@ -1,0 +1,62 @@
+﻿@model TCDBEntities.Expense
+
+@{
+    ViewBag.Title = "Expense Details | Town Clean";    
+}
+
+
+
+<div class="clearfix"></div>
+
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+            <div class="x_title">
+                <h2>Expense Details </h2>
+                <ul class="nav navbar-right panel_toolbox">
+                    <li>
+                        <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                    </li>
+               
+              
+                </ul>
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+                <table class="table">
+                    <tr>
+                        <td>Expanse Name</td>
+                        <td>@Html.DisplayFor(m=>m.ExpenseName)</td>
+                        </tr>
+                    <tr>
+                        <td>Expanse Type</td>
+                        <td>@Html.DisplayFor(m => m.ExpenseType)</td>
+                    </tr>
+                    <tr>
+                        <td>Expanse Amount</td>
+                        <td>@Html.DisplayFor(m => m.Amount)</td>
+                    </tr>
+                    <tr>
+                        <td>Expanse Date</td>
+                        <td>@Html.DisplayFor(m => m.ExpenseDate)</td>
+                    </tr>
+                    <tr>
+                        <td>Expanse Description</td>
+                        <td>@Html.DisplayFor(m => m.Description)</td>
+                    </tr>
+                    <tr>
+                        <td>Expanse Payment Mode</td>
+                        <td>@Html.DisplayFor(m => m.PaymentMode)</td>
+                    </tr>
+                    <tr>
+                        <td>Expanse Payment Mode No: </td>
+                        <td>@Html.DisplayFor(m => m.PaymentModeNo)</td>
+                    </tr>
+                    <tr>
+                        <td>Expanse Attachment </td>
+                        <td>@Html.DisplayFor(m => m.Attachment_Url)</td>
+                    </tr>                    
+                </table>
+            </div>
+        </div>
+    </div>

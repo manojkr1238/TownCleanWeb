@@ -9,19 +9,24 @@
             <div class="x_panel">
                 <div class="x_title">
                     <h2>Expense List <small>All Branches</small></h2>
-                    <div class="clearfix"></div>
+                   <div class="clearfix"></div>
                 </div>
                 <div class="x_content">
+                    <div id="example_wrapper" class="dataTable_wrapper" role="grid">
+                     <div id="example_length" class="dataTables_length"><label>Show <select size="1" style="width: 56px;padding: 6px;" name="example_length" aria-controls="example"><option value="10">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select> entries</label></div>
+                    <div class="dataTables_filter" id="example_filter"><label>Search all columns: <input type="text" aria-controls="example"></label></div>
                     <table id="example" class="table table-striped responsive-utilities jambo_table">
                         <thead>
                             <tr class="headings">
+                               
+                                <th>Expense ID</th>
                                 <th>Expense Name </th>
                                 <th>Expense Type </th>
+                                <th>Amount </th>
                                 <th>Expense Date </th>
-                                <th>Description</th>
+                                <th>Description </th>
                                 <th>Payment Mode </th>
-                                <th>Attachment Url </th>
-
+                                <th>Payment Mode No </th>
                                 <th class=" no-link last">
                                     <span class="nobr">View</span>
                                 </th>
@@ -29,59 +34,62 @@
                         </thead>
                         <tbody>
                             @{
-                                var quot = Model.ToList();
+                                var Exp = Model.ToList();
 
-                                for (int i = 0; i < quot.Count; i++)
+                                for (int i = 0; i < Exp.Count; i++)
                                 {
                                     if (i % 2 == 0)
                                     {
                                         <tr class="even pointer">
+                                            <td class=" ">@Exp[i].ExpenseID</td>
                                             <td class="a-center ">
-                                                @quot[i].ExpenseName
+                                                @Exp[i].ExpenseName
                                             </td>
-
-                                            <td class=" ">@quot[i].ExpenseType </td>
-                                            <td class=" ">@quot[i].Amount </td>
-                                            <td class=" ">@quot[i].ExpenseDate</td>
-                                            <td class=" ">
-                                                @quot[i].Amount<br />
-                                                 @quot[i].Description<br />
-                                                 @quot[i].PaymentMode
-                                            </td>
-                                            <td class=" ">@quot[i].Attachment_Url</td>
-
+                                            <td class=" ">@Exp[i].ExpenseType</td>
+                                            <td class=" ">@Exp[i].Amount</td>
+                                            <td class=" ">@Exp[i].ExpenseDate</td>
+                                            
+                                            <td class=" ">@Exp[i].Description </td>
+                                            
+                                            <td class=" ">@Exp[i].PaymentMode</td>
+                                            <td class=" ">@Exp[i].PaymentModeNo</td>
+                                           
+                                           
                                             <td class=" last">
-                                                @Html.ActionLink("View", "ExpenseDetails", new { id = @quot[i].ExpenseID })
+                                                @Html.ActionLink("View", "ExpenseDetails", new { id = @Exp[i].ExpenseID })
                                             </td>
                                         </tr>
                                     }
                                     else
                                     {
                                         <tr class="odd pointer">
+                                            <td class=" ">@Exp[i].ExpenseID</td>
                                             <td class="a-center ">
-                                                @quot[i].ExpenseName
+                                                @Exp[i].ExpenseName
                                             </td>
-
-                                            <td class=" ">@quot[i].ExpenseType </td>
-                                            <td class=" ">@quot[i].ExpenseDate</td>
-                                            <td class=" ">
-                                                @quot[i].Amount<br />
-                                                Email: @quot[i].Description<br />
-                                                Phone: @quot[i].PaymentMode
-                                            </td>
-                                            <td class=" ">@quot[i].Attachment_Url</td>
-
+                                            <td class=" ">@Exp[i].ExpenseType</td>
+                                            <td class=" ">@Exp[i].Amount </td>
+                                            <td class=" ">@Exp[i].ExpenseDate </td>
+                                           
+                                            <td class=" ">@Exp[i].Description</td>
+                                            <td class=" ">@Exp[i].PaymentMode</td>
+                                            <td class=" ">@Exp[i].PaymentModeNo</td>
+                                       
                                             <td class=" last">
-                                                @Html.ActionLink("View", "ExpenseDetails", new { id = @quot[i].ExpenseID })
+                                                @Html.ActionLink("View", "ExpenseDetails", new { id = @Exp[i].ExpenseID })
                                             </td>
                                         </tr>
                                     }
                                 }
                             }
+                            
                         </tbody>
+                        
                     </table>
+                        
                 </div>
             </div>
+                
         </div>
         <br />
         <br />
@@ -96,3 +104,4 @@
     <script src="../../js/datatables/js/jquery.dataTables.js"></script>
     <script src="../../js/datatables/tools/js/dataTables.tableTools.js"></script>
 }
+

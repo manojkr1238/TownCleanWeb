@@ -63,7 +63,8 @@ namespace TCDBEntities
         public string Amount { get; set; }
         public string ExpenseDate { get; set; }
         public string Description { get; set; }
-        public DateTime PaymentMode { get; set; }
+        public string PaymentMode { get; set; }
+        public string PaymentModeNo { get; set; }
         public decimal? Attachment_Url { get; set; }
        
     }
@@ -82,6 +83,7 @@ namespace TCDBEntities
 
         [Required]
         public string PaymentMode { get; set; }
+        public string PaymentModeNo { get; set; }
         [Required]
         public string Description { get; set; }
 

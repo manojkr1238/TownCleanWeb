@@ -53,15 +53,17 @@ namespace TCServices
 
           IEnumerable<ExpenseSummary> IExpenseService.GetExpenseSummaryList()
           {
-              return _genericRepository.GetAll().Select(q => new ExpenseSummary
+              return _genericRepository.GetAll().Select(e => new ExpenseSummary
               {
-                  ExpenseID = q.ExpenseID,
-                  ExpenseName = q.ExpenseName,
-                  ExpenseType = q.ExpenseType,
+                  ExpenseID = e.ExpenseID,
+                  ExpenseName = e.ExpenseName,
+                  ExpenseType = e.ExpenseType,
                   
                  
-                  ExpenseDate = q.ExpenseDate,
-                  Description = q.Description,
+                  ExpenseDate = e.ExpenseDate,
+                  Description = e.Description,
+                  PaymentMode = e.PaymentMode,
+                  PaymentModeNo = e.PaymentModeNo
                  
               });
           }
