@@ -12,28 +12,49 @@
                    <div class="clearfix"></div>
                 </div>
                 <div class="x_content">
-                    <div id="example_wrapper" class="dataTable_wrapper" role="grid">
-                     <div id="example_length" class="dataTables_length"><label>Show <select size="1" style="width: 56px;padding: 6px;" name="example_length" aria-controls="example"><option value="10">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select> entries</label></div>
-                    <div class="dataTables_filter" id="example_filter"><label>Search all columns: <input type="text" aria-controls="example"></label></div>
-                    <table id="example" class="table table-striped responsive-utilities jambo_table">
-                        <thead>
-                            <tr class="headings">
-                               
-                                <th>Expense ID</th>
-                                <th>Expense Name </th>
-                                <th>Expense Type </th>
-                                <th>Amount </th>
-                                <th>Expense Date </th>
-                                <th>Description </th>
-                                <th>Payment Mode </th>
-                                <th>Payment Mode No </th>
-                                <th class=" no-link last">
-                                    <span class="nobr">View</span>
-                                </th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @{
+                    @using (Html.BeginForm())
+                    {
+                        <p>
+                            Find by name: @Html.TextBox("SearchString")
+                            <input type="submit" value="Search" />
+                        </p>
+                    }
+
+                   
+                            <div id="example_wrapper" class="dataTable_wrapper" role="grid">
+                                <div id="example_length" class="dataTables_length"><label>Show <select size="1" style="width: 56px;padding: 6px;" name="example_length" aria-controls="example"><option value="10">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select> entries</label></div>
+                                <div class="dataTables_filter" id="example_filter"><label>Search all columns: <input type="text" aria-controls="example"></label></div>
+                                <table id="example" class="table table-striped responsive-utilities jambo_table">
+                                    <tr>
+                                        <th>
+                                            @Html.ActionLink("Expanse Name", "ExpenseList", new { sortOrder = ViewBag.NameSortParm })
+                                        </th>
+                                        <th>
+                                            First Name
+                                        </th>
+                                        <th>
+                                            @Html.ActionLink("Expense Date", "ExpenseList", new { sortOrder = ViewBag.DateSortParm })
+                                        </th>
+                                        <th></th>
+                                    </tr>
+                                    <thead>
+                                        <tr class="headings">
+
+                                            <th>Expense ID</th>
+                                            <th>Expense Name </th>
+                                            <th>Expense Type </th>
+                                            <th>Amount </th>
+                                            <th>Expense Date </th>
+                                            <th>Description </th>
+                                            <th>Payment Mode </th>
+                                            <th>Payment Mode No </th>
+                                            <th class=" no-link last">
+                                                <span class="nobr">View</span>
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @{
                                 var Exp = Model.ToList();
 
                                 for (int i = 0; i < Exp.Count; i++)
@@ -48,13 +69,13 @@
                                             <td class=" ">@Exp[i].ExpenseType</td>
                                             <td class=" ">@Exp[i].Amount</td>
                                             <td class=" ">@Exp[i].ExpenseDate</td>
-                                            
+
                                             <td class=" ">@Exp[i].Description </td>
-                                            
+
                                             <td class=" ">@Exp[i].PaymentMode</td>
                                             <td class=" ">@Exp[i].PaymentModeNo</td>
-                                           
-                                           
+
+
                                             <td class=" last">
                                                 @Html.ActionLink("View", "ExpenseDetails", new { id = @Exp[i].ExpenseID })
                                             </td>
@@ -70,25 +91,25 @@
                                             <td class=" ">@Exp[i].ExpenseType</td>
                                             <td class=" ">@Exp[i].Amount </td>
                                             <td class=" ">@Exp[i].ExpenseDate </td>
-                                           
+
                                             <td class=" ">@Exp[i].Description</td>
                                             <td class=" ">@Exp[i].PaymentMode</td>
                                             <td class=" ">@Exp[i].PaymentModeNo</td>
-                                       
+
                                             <td class=" last">
                                                 @Html.ActionLink("View", "ExpenseDetails", new { id = @Exp[i].ExpenseID })
                                             </td>
                                         </tr>
                                     }
                                 }
-                            }
-                            
-                        </tbody>
-                        
-                    </table>
-                        
-                </div>
-            </div>
+                                        }
+
+                                    </tbody>
+
+                                </table>
+
+                            </div>
+</div>
                 
         </div>
         <br />

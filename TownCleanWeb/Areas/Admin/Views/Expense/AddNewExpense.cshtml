@@ -13,8 +13,9 @@
                 </div>
                 <div class="x_content">
                     <br />
-                    @using (Html.BeginForm("AddNewExpense", "Expense", FormMethod.Post, new { @class = "form-horizontal form-label-left", role = "form" }))
+                    @using (Html.BeginForm("AddNewExpense", "Expense", FormMethod.Post, new { @class = "form-horizontal form-label-left", role = "form" , enctype="multipart/form-data" }))
                     {
+                       
                         @Html.AntiForgeryToken()
                         @*<form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">*@
                         <div class="form-group">
@@ -80,7 +81,7 @@
                                 Attachment <span class="required">&nbsp;</span>
                              </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                            @Html.TextBoxFor(m => m.Attachment_Url, new { @class = "form-control col-md-7 col-xs-12" })
+                            <input type="file" onchange="fileCheck(this);" />
            
                          </div>
                         </div>

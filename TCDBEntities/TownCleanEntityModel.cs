@@ -87,7 +87,8 @@ namespace TCDBEntities
         [Required]
         public string Description { get; set; }
 
-        public string Attachment_Url { get; set; }
+         
+        public  byte[] Attachment_Url { get; set; }
 
         //public int? CustomerID { get; set; }
 
