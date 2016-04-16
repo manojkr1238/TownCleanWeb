@@ -12,31 +12,14 @@
                    <div class="clearfix"></div>
                 </div>
                 <div class="x_content">
-                    @using (Html.BeginForm())
-                    {
-                        <p>
-                            Find by name: @Html.TextBox("SearchString")
-                            <input type="submit" value="Search" />
-                        </p>
-                    }
+                 
 
                    
                             <div id="example_wrapper" class="dataTable_wrapper" role="grid">
                                 <div id="example_length" class="dataTables_length"><label>Show <select size="1" style="width: 56px;padding: 6px;" name="example_length" aria-controls="example"><option value="10">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select> entries</label></div>
                                 <div class="dataTables_filter" id="example_filter"><label>Search all columns: <input type="text" aria-controls="example"></label></div>
                                 <table id="example" class="table table-striped responsive-utilities jambo_table">
-                                    <tr>
-                                        <th>
-                                            @Html.ActionLink("Expanse Name", "ExpenseList", new { sortOrder = ViewBag.NameSortParm })
-                                        </th>
-                                        <th>
-                                            First Name
-                                        </th>
-                                        <th>
-                                            @Html.ActionLink("Expense Date", "ExpenseList", new { sortOrder = ViewBag.DateSortParm })
-                                        </th>
-                                        <th></th>
-                                    </tr>
+                                   
                                     <thead>
                                         <tr class="headings">
 

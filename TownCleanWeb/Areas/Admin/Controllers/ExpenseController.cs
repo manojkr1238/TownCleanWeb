@@ -39,54 +39,39 @@ namespace TownCleanWeb.Areas.Admin.Controllers
         }
 
 
-        public ActionResult ExpenseList(string sortOrder, string searchString)
+        public ActionResult ExpenseList(String SearchDateString)
         {
-            var expenseList = _ExpenseService.GetExpenseSummaryList().ToList();
-            ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
-            ViewBag.DateSortParm = sortOrder == "Date" ? "date_desc" : "Date";
-            var Expenses = from s in db.Expenses
-                           select s;
 
-            switch (sortOrder)
-            {
-                case "name_desc":
-                    Expenses = Expenses.OrderByDescending(s => s.ExpenseName);
-                    break;
-                case "Date":
-                    Expenses = Expenses.OrderBy(s => s.ExpenseType);
-                    break;
-                case "date_desc":
-                    Expenses = Expenses.OrderByDescending(s => s.ExpenseDate);
-                    break;
-                default:
-                    Expenses = Expenses.OrderBy(s => s.PaymentMode);
-                    break;
-            }
+           var expenseList = _ExpenseService.GetExpenseSummaryList().ToList();
+          
             return View(expenseList);
         }
-     /*  public ViewResult Index(string Expenses, string strSearch)
-       {
-           //Select all Book records
-           var expenses = from b in db.Expenses
-                          select b;
 
-           //Get list of Book publisher
-           var expenseList = from c in expenses
-                             orderby c.ExpenseName
-                             select c.ExpenseType;
+       /* public ViewResult ExpenseList(string expenseType, string strSearch)
+           {
+               var expenseList = _ExpenseService.GetExpenseSummaryList().ToList();
+               //Select all Book records
+               var expense = from b in db.Expenses
+                              select b;
 
-           //Set distinct list of publishers in ViewBag property
-           ViewBag.Expenses = new SelectList(expenseList.Distinct());
+               //Get list of Book publisher
+               var exepenseList = from c in expense
+                              orderby c.ExpenseName
+                              select c.ExpenseType;
 
-           //Search records by Book Name 
-           if (!string.IsNullOrEmpty(strSearch))
-               Expenses = Expenses.Where(m => m.ExpenseName.Contains(strSearch));
+               
 
-           //Search records by Publisher
-           if (!string.IsNullOrEmpty(Expenses))
-               Expenses = Expenses.Where(m => m.CompareTo == Expenses);
-           return View(books);
-       }*/
+               //Search records by Book Name 
+               if (!string.IsNullOrEmpty(strSearch))
+                   expense = expense.Where(m => m.ExpenseName.Contains(strSearch));
+
+               //Search records by Publisher
+               if (!string.IsNullOrEmpty(expenseType))
+                   expense = expense.Where(m => m.ExpenseType == expenseType);
+
+               return View(expenseList);
+           
+          }*/
         public ActionResult ExpenseReport()
         {
             
@@ -105,7 +90,7 @@ namespace TownCleanWeb.Areas.Admin.Controllers
                 Byte[] fileBytes = pck.GetAsByteArray();
                 Response.Clear();
                 Response.Buffer = true;
-                Response.AddHeader("content-disposition", "attachment;filename=DataTable.xlsx");
+                Response.AddHeader("content-disposition", "attachment;filename=ExpenseDetails.xlsx");
                 // Replace filename with your custom Excel-sheet name.
 
                 Response.Charset = "";
@@ -146,7 +131,7 @@ namespace TownCleanWeb.Areas.Admin.Controllers
             Expense qc = new Expense();
             qc.ExpenseName = model.ExpenseName;
             qc.ExpenseType = model.ExpenseType;
-
+            
             qc.ExpenseDate = model.ExpenseDate;
             qc.Description = model.Description;
             qc.PaymentMode = model.PaymentMode;

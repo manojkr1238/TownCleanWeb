@@ -65,20 +65,22 @@ namespace TCDBEntities
         public string Description { get; set; }
         public string PaymentMode { get; set; }
         public string PaymentModeNo { get; set; }
-        public decimal? Attachment_Url { get; set; }
+        public byte[] Attachement_Url { get; set; }
+        
+       
        
     }
     public class InsertExpense
     {
-        [Required]
+        [Required(ErrorMessage = "Expense Name is required")]
         public string ExpenseName { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Expense Type is required")]
         public string ExpenseType { get; set; }
-
+        [Required(ErrorMessage = "Expense Amount is required")]
         public string Amount { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Expense Date is required")]
         public string ExpenseDate { get; set; }
 
         [Required]
@@ -87,8 +89,10 @@ namespace TCDBEntities
         [Required]
         public string Description { get; set; }
 
-         
-        public  byte[] Attachment_Url { get; set; }
+
+        public byte[] Attachement_Url { get; set; }
+        
+       
 
         //public int? CustomerID { get; set; }
 
